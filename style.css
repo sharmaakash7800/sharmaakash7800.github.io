@@ -524,3 +524,16 @@ bottom: 18px;
     grid-template-columns: 1fr;
   }
 }
+
+
+#skills {
+  padding-top: 95px;
+}
+
+.skill-card {
+  min-height: 265px;
+}
+
+.skill-title {
+  margin-bottom: 22px;
+}
