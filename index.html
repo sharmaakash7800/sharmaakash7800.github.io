@@ -952,32 +952,579 @@
     </div>
   </nav>
 
+  <!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akash Sharma | Portfolio</title>
+
+  <!-- Google tag (gtag.js) -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHVKMPK12P"></script>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-ZHVKMPK12P');
+  </script>
+
+  <style>
+    :root {
+      --bg: #07101f;
+      --bg-soft: #0b1120;
+      --card: #111827;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --accent: #38bdf8;
+      --accent-2: #818cf8;
+      --border: rgba(255,255,255,0.09);
+      --shadow: 0 20px 55px rgba(0,0,0,0.36);
+      --max-width: 1180px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(56,189,248,0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(129,140,248,0.16), transparent 30%),
+        linear-gradient(180deg, #07101f, #0b1120 35%, #0f172a 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: auto;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(14px);
+      background: rgba(11,17,32,0.76);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      padding: 90px 0 60px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid rgba(56,189,248,0.30);
+      background: rgba(56,189,248,0.08);
+      color: #bae6fd;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: 3.25rem;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 720px;
+      margin-bottom: 26px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: 0.3s;
+      display: inline-block;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      opacity: 0.96;
+    }
+
+    .btn-outline {
+      border-color: rgba(255,255,255,0.14);
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .profile-row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .profile-circle {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 1.85rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      flex: 0 0 auto;
+    }
+
+    .profile-row h3 {
+      font-size: 1.35rem;
+      margin-bottom: 3px;
+    }
+
+    .profile-row p {
+      color: var(--muted);
+      font-size: 0.96rem;
+      margin: 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+      min-height: 126px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .stat h4 {
+      font-size: 1.55rem;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .stat p {
+      color: var(--muted);
+      font-size: 0.94rem;
+      margin: 0;
+    }
+
+    .section {
+      padding: 70px 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 780px;
+      margin-bottom: 32px;
+    }
+
+    .about-card,
+    .timeline-item,
+    .project-card,
+    .skill-card,
+    .contact-card,
+    .achievement-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .about-card {
+      padding: 28px;
+    }
+
+    .about-card p {
+      color: var(--muted);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .info-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      padding: 18px;
+      border-radius: 18px;
+    }
+
+    .info-box h4 {
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+
+    .info-box p {
+      margin-bottom: 8px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .skill-card {
+      padding: 22px;
+    }
+
+    .skill-card h3 {
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+
+    .chip-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      padding: 9px 12px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 20px;
+    }
+
+    .timeline-item {
+      padding: 24px;
+    }
+
+    .timeline-item h3 {
+      margin-bottom: 6px;
+      font-size: 1.22rem;
+    }
+
+    .timeline-item .meta {
+      color: var(--accent);
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+
+    .timeline-item ul {
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .timeline-item li {
+      margin-bottom: 8px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .project-card {
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(56,189,248,0.35);
+    }
+
+    .project-top {
+      height: 8px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+
+    .project-body {
+      padding: 22px;
+    }
+
+    .project-body h3 {
+      margin-bottom: 10px;
+      font-size: 1.18rem;
+    }
+
+    .project-body p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .achievement-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .achievement-card {
+      padding: 22px;
+      text-align: center;
+    }
+
+    .achievement-card h3 {
+      color: var(--accent);
+      font-size: 1.65rem;
+      margin-bottom: 8px;
+    }
+
+    .achievement-card p {
+      color: var(--muted);
+    }
+
+    .contact-card {
+      padding: 28px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .contact-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .contact-item h4 {
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .contact-item p {
+      color: var(--muted);
+      word-break: break-word;
+    }
+
+    .footer {
+      padding: 30px 0 45px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 1050px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid,
+      .projects-grid,
+      .achievement-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero h1 {
+        font-size: 2.55rem;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .nav-inner {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .nav-links {
+        justify-content: center;
+        gap: 14px;
+      }
+
+      .hero {
+        padding-top: 65px;
+      }
+
+      .hero h1 {
+        font-size: 2.05rem;
+      }
+
+      .stats-grid,
+      .skills-grid,
+      .projects-grid,
+      .achievement-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 55px 0;
+      }
+
+      .section-title {
+        font-size: 1.65rem;
+      }
+
+      .profile-row {
+        align-items: flex-start;
+      }
+    }
+  </style>
+
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <div class="logo">Akash<span>.</span></div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
   <header class="hero">
     <div class="container hero-grid">
       <div class="hero-text">
-        <div class="tag">MIS • ERP • Dashboards • Shopify • N8N • Apps Script • Facebook Ads • AI Tools</div>
+        <div class="tag">Business Analyst • ERP • MIS • Automation • Dashboards</div>
         <h1>Hi, I'm <span>Akash Sharma</span> 👋</h1>
         <p>
-          IT professional with experience in AI tools, automation, MIS dashboards,
-          ERP workflows, AppSheet apps, Shopify operations, Facebook Ads, and business systems.
-          I build practical digital solutions that improve operations, reporting, and team productivity.
+          Business Analyst and automation specialist with hands-on experience in ERP operations,
+          MIS reporting, workflow automation, dashboard development, Shopify operations,
+          business process tracking, and AI-based support systems.
         </p>
         <div class="hero-buttons">
-          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#projects" class="btn btn-primary">View Work</a>
           <a href="#contact" class="btn btn-outline">Contact Me</a>
+          <a href="https://docs.google.com/document/d/1udGwFcLZRj2xZEwwf-znZMoeGHEQDqrr3Ukz3_uPCMI/preview" class="btn btn-outline" target="_blank">View Resume</a>
         </div>
       </div>
 
 ```
   <div class="hero-card">
-    <div class="profile-circle">AS</div>
-    <h3>Akash Sharma</h3>
-    <p>IT Professional | AI & Automation Specialist</p>
+    <div class="profile-row">
+      <div class="profile-circle">AS</div>
+      <div>
+        <h3>Akash Sharma</h3>
+        <p>ERP, MIS and Automation Specialist</p>
+      </div>
+    </div>
 
-    <div class="mini-stats">
+    <div class="stats-grid">
       <div class="stat">
         <h4><span class="counter" data-target="2087">0</span></h4>
         <p>Shopify Products Listed</p>
+      </div>
+
+      <div class="stat">
+        <h4><span class="counter" data-target="50">0</span></h4>
+        <p>Looker Studio Dashboards</p>
       </div>
 
       <div class="stat">
@@ -986,18 +1533,18 @@
       </div>
 
       <div class="stat">
-        <h4><span class="counter" data-target="4">0</span> Modules</h4>
-        <p>Designed in ERP System</p>
+        <h4><span class="counter" data-target="4">0</span></h4>
+        <p>ERP Modules Designed</p>
       </div>
 
       <div class="stat">
-        <h4>AI Chatbot</h4>
-        <p>Trained Chat-Based Bot using OpenAI</p>
+        <h4><span class="counter" data-target="2043">0</span></h4>
+        <p>Students & Professionals Trained</p>
       </div>
 
-      <div class="stat stat-wide">
-        <h4>Facebook Ads</h4>
-        <p>Campaigns Created & Managed</p>
+      <div class="stat">
+        <h4><span class="counter" data-target="1056">0</span></h4>
+        <p>Canva Templates Created</p>
       </div>
     </div>
   </div>
@@ -1010,42 +1557,156 @@
     <div class="container">
       <h2 class="section-title">About Me</h2>
       <p class="section-subtitle">
-        I work on system improvement, process automation, reporting dashboards,
-        product listing operations, ad management, and practical digital tools for business use.
+        I build practical systems that improve reporting accuracy, reduce manual work,
+        monitor business operations, and support management decision-making.
       </p>
 
 ```
   <div class="about-card">
     <p>
-      I am an IT professional with hands-on experience in AI tools, ERP systems,
-      CRM automation, IMS workflows, MIS reporting, Shopify product listing, Facebook Ads,
-      and no-code/low-code platforms like AppSheet and N8N. My focus is to build systems
-      that make work faster, cleaner, and easier to manage.
+      I work across ERP operations, MIS reporting, Google Sheets automation,
+      Looker Studio dashboards, N8N workflows, AppSheet apps, Shopify catalog operations,
+      Facebook Ads campaign support, and OpenAI chatbot solutions. My focus is to convert
+      business requirements into trackable, scalable, and easy-to-use workflow systems.
     </p>
-
-    <br><br>
-
-    <a class="btn btn-primary"
-      href="https://docs.google.com/document/d/1udGwFcLZRj2xZEwwf-znZMoeGHEQDqrr3Ukz3_uPCMI/preview"
-      target="_blank">
-      View My Resume
-    </a>
 
     <div class="about-grid">
       <div class="info-box">
-        <h4>Education</h4>
-        <p>M.Sc. (IT) – Vidya Professional & Technical College (2021–2023)</p>
-        <p>B.Sc. (IT) – Vidya Professional & Technical College (2018–2021)</p>
+        <h4>Business Focus</h4>
+        <p>Requirement Understanding</p>
+        <p>Process Tracking</p>
+        <p>Workflow Optimization</p>
+        <p>SOP Support</p>
+        <p>TAT Monitoring</p>
+        <p>Team Coordination</p>
       </div>
 
       <div class="info-box">
-        <h4>Highlights</h4>
-        <p>2087 Shopify Products Listed</p>
-        <p>6 N8N Workflows Created</p>
-        <p>4 Modules Designed in ERP System</p>
-        <p>AI Chatbot Trained using OpenAI</p>
-        <p>Facebook Ads Campaigns Created & Managed</p>
-        <p>Languages: English, Hindi</p>
+        <h4>Education</h4>
+        <p>M.Sc. IT — Maharshi Dayanand Saraswati University, Ajmer</p>
+        <p>Vidya Professional and Technical College | 2021–2023</p>
+        <p>B.Sc. IT — Maharshi Dayanand Saraswati University, Ajmer</p>
+        <p>Vidya Professional and Technical College | 2018–2021</p>
+        <p>Senior Secondary, PCM — RBSE Board | 2017–2018</p>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <section class="section" id="skills">
+    <div class="container">
+      <h2 class="section-title">Core Skills</h2>
+      <p class="section-subtitle">
+        Skills grouped by business use, reporting, automation, systems, and technical implementation.
+      </p>
+
+```
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h3>Business Analysis</h3>
+      <div class="chip-wrap">
+        <span class="chip">Requirement Understanding</span>
+        <span class="chip">Operations Management</span>
+        <span class="chip">Process Tracking</span>
+        <span class="chip">Workflow Optimization</span>
+        <span class="chip">SOP Support</span>
+        <span class="chip">TAT Monitoring</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3>MIS & Reporting</h3>
+      <div class="chip-wrap">
+        <span class="chip">MIS Reporting</span>
+        <span class="chip">KPI Tracking</span>
+        <span class="chip">KRA Dashboards</span>
+        <span class="chip">Data Cleaning</span>
+        <span class="chip">Data Validation</span>
+        <span class="chip">Trend Analysis</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3>ERP & Workflow</h3>
+      <div class="chip-wrap">
+        <span class="chip">ERP Operations</span>
+        <span class="chip">Inventory Tracking</span>
+        <span class="chip">Order Monitoring</span>
+        <span class="chip">Flow Management</span>
+        <span class="chip">Project Tracking</span>
+        <span class="chip">Checklist System</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3>Dashboard & BI</h3>
+      <div class="chip-wrap">
+        <span class="chip">Looker Studio</span>
+        <span class="chip">Google Sheets Dashboards</span>
+        <span class="chip">KPI Dashboards</span>
+        <span class="chip">Connected Reports</span>
+        <span class="chip">Business Intelligence</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3>Automation Tools</h3>
+      <div class="chip-wrap">
+        <span class="chip">Google Apps Script</span>
+        <span class="chip">N8N</span>
+        <span class="chip">AppSheet</span>
+        <span class="chip">Google Sheets Automation</span>
+        <span class="chip">OpenAI Chatbot</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3>Technical Skills</h3>
+      <div class="chip-wrap">
+        <span class="chip">Python</span>
+        <span class="chip">JavaScript</span>
+        <span class="chip">PHP</span>
+        <span class="chip">Java</span>
+        <span class="chip">MySQL</span>
+        <span class="chip">HTML</span>
+        <span class="chip">CSS</span>
+        <span class="chip">Advanced Excel</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3>E-commerce</h3>
+      <div class="chip-wrap">
+        <span class="chip">Shopify Listing</span>
+        <span class="chip">Catalog Management</span>
+        <span class="chip">Product Data Handling</span>
+        <span class="chip">Inventory Updates</span>
+        <span class="chip">Order Reporting</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3>Marketing Support</h3>
+      <div class="chip-wrap">
+        <span class="chip">Facebook Ads</span>
+        <span class="chip">Campaign Setup</span>
+        <span class="chip">Campaign Monitoring</span>
+        <span class="chip">Meta Business Suite</span>
+        <span class="chip">Canva</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3>Google Workspace</h3>
+      <div class="chip-wrap">
+        <span class="chip">Google Sheets</span>
+        <span class="chip">Apps Script</span>
+        <span class="chip">Connected Reports</span>
+        <span class="chip">Audit Checks</span>
+        <span class="chip">Data Controls</span>
       </div>
     </div>
   </div>
@@ -1056,28 +1717,25 @@
 
   <section class="section" id="experience">
     <div class="container">
-      <h2 class="section-title">Experience</h2>
+      <h2 class="section-title">Professional Experience</h2>
       <p class="section-subtitle">
-        My experience includes dashboard building, AI tool development,
-        training, automation, workflow management, Shopify operations, and ad management.
+        Experience in business operations, automation, reporting, training, and web development.
       </p>
 
 ```
   <div class="timeline">
     <div class="timeline-item">
-      <h3>MIS Executive</h3>
-      <div class="meta">MGCINDIA | Sep 2024 – Present</div>
+      <h3>MIS Executive / Business Operations and Automation</h3>
+      <div class="meta">MGC INDIA | Sep 2024 – Present</div>
       <ul>
-        <li>Built and managed MIS dashboards and reporting systems.</li>
-        <li>Developed AI tools for HR, CRM, and internal workflows.</li>
-        <li>Worked on ERP systems and Inventory Management System requirements.</li>
-        <li>Designed 4 modules in ERP System.</li>
-        <li>Created 6 N8N workflows for automation and follow-up processes.</li>
-        <li>Listed 2087 Shopify products and managed product listing operations.</li>
-        <li>Created and managed Facebook Ads campaigns.</li>
-        <li>Trained chat-based AI chatbot using OpenAI.</li>
-        <li>Built dashboards for delegation, task tracking, leave status, and reporting.</li>
-        <li>Managed product listing and catalog workflows for MGC Kart.</li>
+        <li>Managed MIS reporting, ERP operations, Shopify operations, workflow tracking, dashboard development, and automation-related business processes.</li>
+        <li>Created operational dashboards for management reporting, KPI tracking, pending work monitoring, inventory visibility, workflow status, and team performance.</li>
+        <li>Worked on ERP and Inventory Management System operations including stock tracking, order monitoring, workflow updates, inventory coordination, and reporting.</li>
+        <li>Supported Shopify product listing, catalog management, product data handling, inventory updates, and order-related operational reporting.</li>
+        <li>Created Google Sheets-based flow, project, delegation, and checklist systems for tracking work status, team updates, and pending tasks.</li>
+        <li>Developed AI-based chatbot support using OpenAI for internal workflow queries and process assistance.</li>
+        <li>Handled Facebook Ads campaign setup, monitoring, and basic campaign operation support.</li>
+        <li>Performed data cleaning, validation, audit checks, trend analysis, and MIS report preparation for business decision-making.</li>
       </ul>
     </div>
 
@@ -1085,9 +1743,9 @@
       <h3>Freelance Technical Trainer</h3>
       <div class="meta">Jan 2023 – Present</div>
       <ul>
-        <li>Trained students and professionals in Python, web development, and automation.</li>
-        <li>Onboarded and trained employees on systems, workflows, and company processes.</li>
-        <li>Conducted sessions on task execution, reporting, and tool usage.</li>
+        <li>Trained students and professionals in Python, web development, automation tools, Google Workspace, and reporting systems.</li>
+        <li>Conducted practical sessions on Google Sheets, workflow automation, software tools, and programming concepts.</li>
+        <li>Guided learners on MIS reporting methods, automation practices, operational workflows, and technical project development.</li>
       </ul>
     </div>
 
@@ -1095,94 +1753,10 @@
       <h3>Web Developer Intern</h3>
       <div class="meta">Code Planet Technologies Pvt. Ltd. | Nov 2022 – Mar 2023</div>
       <ul>
-        <li>Worked on web development using JavaScript, PHP, and MySQL.</li>
-        <li>Assisted in development and optimization of applications.</li>
+        <li>Assisted in web application development using JavaScript, PHP, and MySQL.</li>
+        <li>Worked on frontend and backend improvements, testing, debugging, and application maintenance.</li>
+        <li>Collaborated with the development team to improve functionality and resolve technical issues.</li>
       </ul>
-    </div>
-  </div>
-</div>
-```
-
-  </section>
-
-  <section class="section" id="skills">
-    <div class="container">
-      <h2 class="section-title">Skills</h2>
-      <p class="section-subtitle">
-        Tools and technologies I use across automation, development, operations, and reporting.
-      </p>
-
-```
-  <div class="skills-grid">
-    <div class="skill-card">
-      <h3>Programming</h3>
-      <div class="chip-wrap">
-        <span class="chip">Python</span>
-        <span class="chip">JavaScript</span>
-        <span class="chip">Java</span>
-        <span class="chip">PHP</span>
-        <span class="chip">HTML</span>
-        <span class="chip">CSS</span>
-        <span class="chip">MySQL</span>
-      </div>
-    </div>
-
-    <div class="skill-card">
-      <h3>AI & Automation</h3>
-      <div class="chip-wrap">
-        <span class="chip">ChatGPT API</span>
-        <span class="chip">OpenAI</span>
-        <span class="chip">N8N</span>
-        <span class="chip">Google Apps Script</span>
-        <span class="chip">AppSheet</span>
-        <span class="chip">CRM Automation</span>
-        <span class="chip">ERP Workflows</span>
-      </div>
-    </div>
-
-    <div class="skill-card">
-      <h3>Business Operations</h3>
-      <div class="chip-wrap">
-        <span class="chip">MIS Dashboards</span>
-        <span class="chip">ERP System</span>
-        <span class="chip">Shopify</span>
-        <span class="chip">Product Listing</span>
-        <span class="chip">Inventory</span>
-        <span class="chip">Reporting</span>
-        <span class="chip">Facebook Ads</span>
-      </div>
-    </div>
-
-    <div class="skill-card">
-      <h3>Data & Dashboards</h3>
-      <div class="chip-wrap">
-        <span class="chip">Pandas</span>
-        <span class="chip">NumPy</span>
-        <span class="chip">Matplotlib</span>
-        <span class="chip">Looker Studio</span>
-        <span class="chip">MIS Dashboards</span>
-        <span class="chip">Reporting Systems</span>
-      </div>
-    </div>
-
-    <div class="skill-card">
-      <h3>Marketing Tools</h3>
-      <div class="chip-wrap">
-        <span class="chip">Facebook Ads</span>
-        <span class="chip">Meta Business Suite</span>
-        <span class="chip">Campaign Management</span>
-        <span class="chip">Canva</span>
-      </div>
-    </div>
-
-    <div class="skill-card">
-      <h3>Workflow Management</h3>
-      <div class="chip-wrap">
-        <span class="chip">Task Tracking</span>
-        <span class="chip">Delegation Dashboard</span>
-        <span class="chip">Follow-up Automation</span>
-        <span class="chip">Team Reporting</span>
-      </div>
     </div>
   </div>
 </div>
@@ -1194,7 +1768,7 @@
     <div class="container">
       <h2 class="section-title">Projects</h2>
       <p class="section-subtitle">
-        Some of the systems, dashboards, and automation solutions I have worked on.
+        Selected work across dashboards, workflow systems, ERP modules, automation, AI support, and e-commerce operations.
       </p>
 
 ```
@@ -1202,11 +1776,56 @@
     <div class="project-card">
       <div class="project-top"></div>
       <div class="project-body">
-        <h3>Inventory Management System (IMS)</h3>
-        <p>
-          Worked on stock management, reporting, tracking features, and dashboard visibility
-          for inventory operations.
-        </p>
+        <h3>Flow Management System</h3>
+        <p>Created a Google Sheets-based workflow system to track process stages, pending tasks, team updates, and operational movement.</p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top"></div>
+      <div class="project-body">
+        <h3>Project Management System</h3>
+        <p>Developed a PMS for task planning, progress tracking, team coordination, reporting, and pending work visibility.</p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top"></div>
+      <div class="project-body">
+        <h3>ERP Module Design</h3>
+        <p>Designed ERP modules for operational tracking, reporting, workflow management, and business process improvement.</p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top"></div>
+      <div class="project-body">
+        <h3>Dashboard Automation</h3>
+        <p>Built Looker Studio dashboards connected with Google Sheets for MIS reporting, KPI monitoring, and performance analysis.</p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top"></div>
+      <div class="project-body">
+        <h3>AI Chatbot</h3>
+        <p>Trained a chat-based bot using OpenAI for internal workflow support, query handling, and process assistance.</p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top"></div>
+      <div class="project-body">
+        <h3>Shopify Operations</h3>
+        <p>Managed Shopify product listing, catalog updates, product data handling, inventory coordination, and e-commerce reporting.</p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top"></div>
+      <div class="project-body">
+        <h3>Inventory Management System</h3>
+        <p>Worked on stock tracking, order monitoring, workflow updates, inventory coordination, and reporting visibility.</p>
         <div class="project-links">
           <a class="btn btn-primary" href="https://sharmaakash7800.github.io/ims-app/" target="_blank">Live Project</a>
         </div>
@@ -1216,121 +1835,71 @@
     <div class="project-card">
       <div class="project-top"></div>
       <div class="project-body">
-        <h3>Shopify Product Listing</h3>
-        <p>
-          Listed 2087 Shopify products and managed product listing operations,
-          catalog workflow, and product visibility.
-        </p>
+        <h3>Delegation Tracker</h3>
+        <p>Built a task accountability system for assignment tracking, follow-up monitoring, and management reporting.</p>
       </div>
     </div>
 
     <div class="project-card">
       <div class="project-top"></div>
       <div class="project-body">
-        <h3>N8N Automation Workflows</h3>
-        <p>
-          Created 6 N8N workflows for business automation, reminder emails,
-          delayed task follow-up, and workflow management.
-        </p>
+        <h3>Checklist Management</h3>
+        <p>Created checklist systems to support process control, task verification, and structured operational execution.</p>
       </div>
     </div>
+  </div>
+</div>
+```
 
-    <div class="project-card">
-      <div class="project-top"></div>
-      <div class="project-body">
-        <h3>ERP System Modules</h3>
-        <p>
-          Designed 4 modules in ERP system for structured business process
-          management and operational workflows.
-        </p>
-      </div>
+  </section>
+
+  <section class="section" id="achievements">
+    <div class="container">
+      <h2 class="section-title">Achievements</h2>
+      <p class="section-subtitle">
+        Key achievements and measurable contributions from training, automation, reporting, and business operations.
+      </p>
+
+```
+  <div class="achievement-grid">
+    <div class="achievement-card">
+      <h3><span class="counter" data-target="2087">0</span></h3>
+      <p>Shopify products listed and managed for catalog operations.</p>
     </div>
 
-    <div class="project-card">
-      <div class="project-top"></div>
-      <div class="project-body">
-        <h3>AI Chatbot</h3>
-        <p>
-          Trained a chat-based bot using OpenAI for query handling,
-          automation support, and internal assistance.
-        </p>
-      </div>
+    <div class="achievement-card">
+      <h3><span class="counter" data-target="50">0</span></h3>
+      <p>Looker Studio dashboards created for reporting and performance visibility.</p>
     </div>
 
-    <div class="project-card">
-      <div class="project-top"></div>
-      <div class="project-body">
-        <h3>Facebook Ads Management</h3>
-        <p>
-          Created and managed Facebook Ads campaigns for business promotion,
-          campaign setup, and ad management.
-        </p>
-      </div>
+    <div class="achievement-card">
+      <h3><span class="counter" data-target="2043">0</span></h3>
+      <p>Students and professionals trained in technical and reporting skills.</p>
     </div>
 
-    <div class="project-card">
-      <div class="project-top"></div>
-      <div class="project-body">
-        <h3>Day Review App</h3>
-        <p>
-          Built using AppSheet for daily work tracking, day-wise review,
-          and workflow reporting.
-        </p>
-      </div>
+    <div class="achievement-card">
+      <h3><span class="counter" data-target="1056">0</span></h3>
+      <p>Canva templates created for design and business communication use.</p>
     </div>
 
-    <div class="project-card">
-      <div class="project-top"></div>
-      <div class="project-body">
-        <h3>Delegation & Task Dashboard</h3>
-        <p>
-          Dashboard for task tracking, pending work, team monitoring,
-          and reporting visibility.
-        </p>
-      </div>
+    <div class="achievement-card">
+      <h3><span class="counter" data-target="6">0</span></h3>
+      <p>N8N workflows created for reminders, reporting, task tracking, and follow-up.</p>
     </div>
 
-    <div class="project-card">
-      <div class="project-top"></div>
-      <div class="project-body">
-        <h3>My System Dashboard</h3>
-        <p>
-          Centralized dashboard for system access, useful links,
-          and record tracking in one place.
-        </p>
-      </div>
+    <div class="achievement-card">
+      <h3><span class="counter" data-target="4">0</span></h3>
+      <p>ERP modules designed to support operational workflows and process management.</p>
     </div>
 
-    <div class="project-card">
-      <div class="project-top"></div>
-      <div class="project-body">
-        <h3>Mail Sender System (AI)</h3>
-        <p>
-          Built an email automation system using ChatGPT and integrated
-          it with Google Sheets.
-        </p>
-      </div>
+    <div class="achievement-card">
+      <h3>Award</h3>
+      <p>Received Dream Team Award 2026 for teamwork and operational contribution.</p>
     </div>
 
-    <div class="project-card">
-      <div class="project-top"></div>
-      <div class="project-body">
-        <h3>Sales Dashboard</h3>
-        <p>
-          Created reporting dashboards in Looker Studio to support business insights
-          and data visibility.
-        </p>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-top"></div>
-      <div class="project-body">
-        <h3>Remote-Controlled Fan System</h3>
-        <p>
-          Designed PCB circuits and worked on a technical hardware-based fan control system.
-        </p>
-      </div>
+    <div class="achievement-card">
+      <h3>Recognition</h3>
+      <p>Received General Proficiency Award for consistent performance.</p>
     </div>
   </div>
 </div>
@@ -1342,7 +1911,7 @@
     <div class="container">
       <h2 class="section-title">Contact</h2>
       <p class="section-subtitle">
-        Let’s connect for opportunities, collaboration, or freelance work.
+        Let’s connect for business automation, dashboard development, workflow systems, reporting solutions, or collaboration.
       </p>
 
 ```
@@ -1355,17 +1924,27 @@
 
       <div class="contact-item">
         <h4>Phone</h4>
-        <p><a href="tel:+919829319993">+91 9829319993</a></p>
+        <p><a href="tel:+919829319993">+91 98293 19993</a></p>
       </div>
 
       <div class="contact-item">
         <h4>LinkedIn</h4>
-        <p><a href="https://linkedin.com/in/akash-s-51a515125" target="_blank">linkedin.com/in/akash-s-51a515125</a></p>
+        <p><a href="https://linkedin.com/in/akash-sharma-728aa6360" target="_blank">linkedin.com/in/akash-sharma-728aa6360</a></p>
       </div>
 
       <div class="contact-item">
         <h4>GitHub</h4>
         <p><a href="https://github.com/sharmaakash7800" target="_blank">github.com/sharmaakash7800</a></p>
+      </div>
+
+      <div class="contact-item">
+        <h4>Portfolio</h4>
+        <p><a href="https://sharmaakash7800.github.io" target="_blank">sharmaakash7800.github.io</a></p>
+      </div>
+
+      <div class="contact-item">
+        <h4>Languages & Interests</h4>
+        <p>English, Hindi | New Technologies, Continuous Learning, Yoga, Reading</p>
       </div>
     </div>
   </div>
@@ -1376,31 +1955,46 @@
 
   <footer class="footer">
     <div class="container">
-      <p>© 2026 Akash Sharma. Built with HTML & CSS.</p>
+      <p>© 2026 Akash Sharma</p>
     </div>
   </footer>
 
   <script>
     const counters = document.querySelectorAll(".counter");
 
-    counters.forEach(counter => {
+    const startCounter = (counter) => {
       counter.innerText = "0";
+      const target = Number(counter.getAttribute("data-target"));
+      const duration = 1800;
+      const startTime = performance.now();
 
-      const updateCounter = () => {
-        const target = Number(counter.getAttribute("data-target"));
-        const current = Number(counter.innerText);
-        const increment = Math.ceil(target / 100);
+      const update = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const value = Math.floor(progress * target);
 
-        if (current < target) {
-          counter.innerText = Math.min(current + increment, target);
-          setTimeout(updateCounter, 20);
+        counter.innerText = value;
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
         } else {
           counter.innerText = target;
         }
       };
 
-      updateCounter();
-    });
+      requestAnimationFrame(update);
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.classList.contains("counted")) {
+          entry.target.classList.add("counted");
+          startCounter(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+
+    counters.forEach(counter => observer.observe(counter));
   </script>
 
 </body>
