@@ -934,9 +934,9 @@
         icon: "✅"
       },
       {
-        id: "ims-system",
-        title: "IMS System",
-        url: "https://docs.google.com/spreadsheets/d/1rIEVhMRWm-xtWnAQA4E_QvKoGflgNT6zA63daIxrbdc/edit?gid=516475266#gid=516475266",
+        id: "dg-store-ims-sheet",
+        title: "DG Store IMS",
+        url: "https://docs.google.com/spreadsheets/d/1rIEVhMRWm-xtWnAQA4E_QvKoGflgNT6zA63daIxrbdc/edit?gid=785843150#gid=785843150",
         category: "sheets",
         icon: "📦"
       },
