@@ -32,9 +32,6 @@
       --primary-hover: #2563eb;
       --primary-light: rgba(59, 130, 246, 0.15);
       
-      --star-active: #f59e0b;
-      --star-active-bg: rgba(245, 158, 11, 0.15);
-      
       --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
       --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
       --shadow-glow: 0 0 25px rgba(59, 130, 246, 0.2);
@@ -62,9 +59,6 @@
       --primary-hover: #1d4ed8;
       --primary-light: rgba(37, 99, 235, 0.1);
       
-      --star-active: #f59e0b;
-      --star-active-bg: rgba(245, 158, 11, 0.15);
-      
       --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.05);
       --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
       --shadow-glow: 0 0 20px rgba(37, 99, 235, 0.15);
@@ -88,11 +82,11 @@
       scroll-behavior: smooth;
     }
 
-    /* Main Wrap Container */
+    /* Main Wrap Container - Desktop Wide */
     .wrap {
-      max-width: 900px;
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 16px 14px 40px;
+      padding: 16px 16px 40px;
       display: flex;
       flex-direction: column;
       gap: 14px;
@@ -235,15 +229,20 @@
       color: var(--text-main);
     }
 
-    /* List Container */
+    /* Desktop Multi-Column Grid Layout */
     .list {
       width: 100%;
       margin: 0;
       padding: 0;
       list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 12px;
+    }
+
+    .list-item {
       display: flex;
-      flex-direction: column;
-      gap: 8px;
+      width: 100%;
     }
 
     .dashboard-link-card {
@@ -251,7 +250,7 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      padding: 13px 16px;
+      padding: 14px 16px;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       background: var(--bg-card);
@@ -306,8 +305,8 @@
     }
 
     .action-btn {
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       border-radius: 6px;
       border: 1px solid var(--border-color);
       background: rgba(255, 255, 255, 0.04);
@@ -320,18 +319,6 @@
       transition: all 0.2s ease;
     }
 
-    .action-btn:hover {
-      background: var(--primary-light);
-      color: var(--primary);
-      border-color: var(--primary);
-    }
-
-    .action-btn.starred {
-      color: var(--star-active);
-      background: var(--star-active-bg);
-      border-color: rgba(245, 158, 11, 0.4);
-    }
-
     .action-btn.delete-btn:hover {
       background: rgba(239, 68, 68, 0.15);
       color: #ef4444;
@@ -342,7 +329,14 @@
       font-size: 13px;
       color: var(--primary);
       opacity: 0.8;
-      margin-left: 2px;
+      margin-left: 4px;
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+
+    .dashboard-link-card:hover .external-arrow {
+      transform: translate(2px, -2px);
+      opacity: 1;
     }
 
     /* Sidebar Drawer Backdrop */
@@ -686,6 +680,11 @@
         font-size: 19px;
       }
 
+      .list {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
       .dashboard-link-card {
         padding: 11px 13px;
       }
@@ -772,7 +771,7 @@
       </div>
     </header>
 
-    <!-- Dashboards List -->
+    <!-- Responsive Grid of Dashboards -->
     <ul id="list" class="list">
       <!-- Items dynamically populated via JS -->
     </ul>
@@ -1114,7 +1113,6 @@
     // State Variables
     let currentCategory = "all";
     let searchQuery = "";
-    let starredIds = JSON.parse(localStorage.getItem("omnidesk_starred") || "[]");
     let customLinks = JSON.parse(localStorage.getItem("omnidesk_custom_links") || "[]");
 
     const categoryConfig = {
@@ -1127,7 +1125,6 @@
 
     const categoryNames = {
       all: "All Items",
-      favorites: "Starred Items",
       dashboards: "Dashboards",
       sheets: "Google Sheets",
       docs: "Docs & Forms",
@@ -1169,7 +1166,6 @@
       const items = getAllItems();
       const counts = {
         all: items.length,
-        favorites: starredIds.length,
         dashboards: 0,
         sheets: 0,
         docs: 0,
@@ -1187,12 +1183,12 @@
     }
 
     function renderDrawerNav(counts) {
-      const keys = ["all", "favorites", "dashboards", "sheets", "docs", "apps", "tools"];
+      const keys = ["all", "dashboards", "sheets", "docs", "apps", "tools"];
       drawerNavList.innerHTML = "";
 
       keys.forEach(key => {
         const isActive = currentCategory === key;
-        const icon = key === "all" ? "✨" : key === "favorites" ? "⭐" : categoryConfig[key]?.icon || "🏷️";
+        const icon = key === "all" ? "✨" : categoryConfig[key]?.icon || "🏷️";
         const navHtml = `
           <li class="drawer-nav-item ${isActive ? 'active' : ''}" onclick="selectCategoryFromDrawer('${key}')">
             <span>${icon} ${categoryNames[key]}</span>
@@ -1201,25 +1197,6 @@
         `;
         drawerNavList.insertAdjacentHTML("beforeend", navHtml);
       });
-    }
-
-    function toggleStar(itemId, event) {
-      if (event) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-
-      if (starredIds.includes(itemId)) {
-        starredIds = starredIds.filter(id => id !== itemId);
-        showToast("Removed from Starred");
-      } else {
-        starredIds.push(itemId);
-        showToast("⭐ Added to Starred!");
-      }
-
-      localStorage.setItem("omnidesk_starred", JSON.stringify(starredIds));
-      updateCounts();
-      renderItems();
     }
 
     function deleteCustomLink(itemId, event) {
@@ -1237,19 +1214,6 @@
       }
     }
 
-    function copyUrl(url, event) {
-      if (event) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-
-      navigator.clipboard.writeText(url).then(() => {
-        showToast("📋 Link copied!");
-      }).catch(() => {
-        showToast("Failed to copy link");
-      });
-    }
-
     function showToast(msg) {
       const toast = document.getElementById("toast");
       document.getElementById("toastMsg").textContent = msg;
@@ -1260,7 +1224,6 @@
     }
 
     function createCardHtml(item) {
-      const isStarred = starredIds.includes(item.id);
       const isCustom = item.isCustom;
 
       return `
@@ -1269,22 +1232,9 @@
             <div class="card-left">
               <div class="card-icon">${item.icon || '🔗'}</div>
               <span class="card-title-text">${item.title}</span>
-              <span class="external-arrow">↗</span>
             </div>
 
             <div class="card-right-tools">
-              <button class="action-btn star-btn ${isStarred ? 'starred' : ''}" 
-                title="${isStarred ? 'Unstar' : 'Star'}" 
-                onclick="toggleStar('${item.id}', event)">
-                ${isStarred ? '★' : '☆'}
-              </button>
-
-              <button class="action-btn" 
-                title="Copy URL" 
-                onclick="copyUrl('${item.url}', event)">
-                📋
-              </button>
-
               ${isCustom ? `
                 <button class="action-btn delete-btn" 
                   title="Delete Link" 
@@ -1292,6 +1242,7 @@
                   🗑️
                 </button>
               ` : ''}
+              <span class="external-arrow">↗</span>
             </div>
           </a>
         </li>
@@ -1306,8 +1257,6 @@
         let categoryMatch = false;
         if (currentCategory === "all") {
           categoryMatch = true;
-        } else if (currentCategory === "favorites") {
-          categoryMatch = starredIds.includes(item.id);
         } else {
           categoryMatch = item.category === currentCategory;
         }
@@ -1324,7 +1273,7 @@
 
       if (filtered.length === 0) {
         list.innerHTML = `
-          <div style="text-align: center; padding: 40px 14px; border: 1px dashed var(--border-color); border-radius: var(--radius-md); color: var(--text-muted);">
+          <div style="grid-column: 1 / -1; text-align: center; padding: 40px 14px; border: 1px dashed var(--border-color); border-radius: var(--radius-md); color: var(--text-muted);">
             No dashboard found.
           </div>
         `;
