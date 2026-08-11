@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <title>OmniDesk - Unified Workspace & Dashboards Hub</title>
+  <meta name="description" content="OmniDesk is your central hub for dashboards, Google Sheets, business management tools, and project links.">
+  
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:title" content="OmniDesk - Workspace & Dashboards Hub">
+  <meta property="og:description" content="Access all your business dashboards, tools, forms, and Google Sheets in one modern workspace.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Dark Theme (Default) */
+      --bg-gradient: linear-gradient(135deg, #090d16 0%, #0f172a 50%, #111827 100%);
+      --bg-surface: rgba(30, 41, 59, 0.6);
+      --bg-surface-hover: rgba(51, 65, 85, 0.8);
+      --bg-card: rgba(15, 23, 42, 0.75);
+      --bg-card-hover: rgba(30, 41, 59, 0.95);
+      --border-color: rgba(255, 255, 255, 0.1);
+      --border-hover: rgba(59, 130, 246, 0.5);
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+      --primary-light: rgba(59, 130, 246, 0.15);
+      
+      --accent: #8b5cf6;
+      --accent-glow: rgba(139, 92, 246, 0.25);
+      
+      --star-active: #f59e0b;
+      --star-active-bg: rgba(245, 158, 11, 0.15);
+      
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+      --shadow-glow: 0 0 25px rgba(59, 130, 246, 0.2);
+
+      --glass-backdrop: blur(16px);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+    }
+
+    [data-theme="light"] {
+      --bg-gradient: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 50%, #cbd5e1 100%);
+      --bg-surface: rgba(255, 255, 255, 0.85);
+      --bg-surface-hover: rgba(255, 255, 255, 0.98);
+      --bg-card: #ffffff;
+      --bg-card-hover: #ffffff;
+      --border-color: rgba(0, 0, 0, 0.08);
+      --border-hover: rgba(37, 99, 235, 0.4);
+      
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-dim: #64748b;
+      
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-light: rgba(37, 99, 235, 0.1);
+      
+      --accent: #7c3aed;
+      --accent-glow: rgba(124, 58, 237, 0.15);
+      
+      --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --shadow-glow: 0 0 20px rgba(37, 99, 235, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background: var(--bg-gradient);
+      background-attachment: fixed;
+      color: var(--text-main);
+      line-height: 1.5;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Layout Wrapper */
+    .app-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 24px 20px 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      min-height: 100vh;
+    }
+
+    /* Modern Glass Header */
+    .header-card {
+      background: var(--bg-surface);
+      backdrop-filter: var(--glass-backdrop);
+      -webkit-backdrop-filter: var(--glass-backdrop);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: border-color 0.3s ease;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-box {
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 24px;
+      font-weight: 800;
+      box-shadow: var(--shadow-glow);
+    }
+
+    .title-group h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, var(--text-main) 30%, var(--primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+    }
+
+    .title-group p {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+      transition: all 0.2s ease;
+    }
+
+    .icon-btn:hover {
+      background: var(--bg-surface-hover);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .icon-btn.active {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* Search & Controls Section */
+    .controls-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .search-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+      font-size: 18px;
+    }
+
+    .search-input {
+      width: 100%;
+      height: 50px;
+      padding: 12px 100px 12px 46px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-main);
+      font-size: 15px;
+      font-weight: 500;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .search-input::placeholder {
+      color: var(--text-dim);
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-light);
+      background: var(--bg-surface-hover);
+    }
+
+    .search-right-tools {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .shortcut-badge {
+      padding: 4px 8px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-color);
+      color: var(--text-dim);
+      font-size: 11px;
+      font-weight: 600;
+      pointer-events: none;
+      display: inline-block;
+    }
+
+    .clear-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 18px;
+      cursor: pointer;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .clear-btn.visible {
+      display: flex;
+    }
+
+    .clear-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--text-main);
+    }
+
+    /* Category Filter Chips */
+    .categories-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE */
+    }
+
+    .categories-bar::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
+    }
+
+    .chip-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 30px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .chip-btn:hover {
+      background: var(--bg-surface-hover);
+      color: var(--text-main);
+      border-color: var(--text-dim);
+    }
+
+    .chip-btn.active {
+      background: linear-gradient(135deg, var(--primary) 0%, #2563eb 100%);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+
+    .chip-count {
+      padding: 2px 7px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.15);
+      font-size: 11px;
+    }
+
+    /* Stats & Bar Info */
+    .info-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4px;
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .result-count strong {
+      color: var(--primary);
+    }
+
+    /* Grid vs List Containers */
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      width: 100%;
+    }
+
+    .links-list-mode {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Card Component */
+    .card-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: var(--glass-backdrop);
+      transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
+      text-decoration: none;
+    }
+
+    .card-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-md), var(--shadow-glow);
+      background: var(--bg-card-hover);
+    }
+
+    .links-list-mode .card-item {
+      flex-direction: row;
+      align-items: center;
+      padding: 14px 18px;
+    }
+
+    .card-main-info {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+
+    .card-text {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.3;
+    }
+
+    .card-url-preview {
+      font-size: 12px;
+      color: var(--text-dim);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card-tag {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+      width: fit-content;
+    }
+
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .action-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 15px;
+      transition: all 0.2s ease;
+    }
+
+    .action-btn:hover {
+      background: var(--primary-light);
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .action-btn.star-btn.starred {
+      color: var(--star-active);
+      background: var(--star-active-bg);
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+
+    .open-link-btn {
+      padding: 0 14px;
+      height: 34px;
+      border-radius: 8px;
+      background: var(--primary);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .open-link-btn:hover {
+      background: var(--primary-hover);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+
+    /* Empty State */
+    .empty-state {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      text-align: center;
+      background: var(--bg-surface);
+      border: 2px dashed var(--border-color);
+      border-radius: var(--radius-lg);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .empty-state.visible {
+      display: flex;
+    }
+
+    .empty-icon {
+      font-size: 48px;
+      opacity: 0.5;
+    }
+
+    .empty-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .empty-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 360px;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1e293b;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 10px;
+      border: 1px solid var(--primary);
+      box-shadow: var(--shadow-md);
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 9999;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Responsive Breakdown */
+    @media (max-width: 768px) {
+      .app-container {
+        padding: 14px 12px 40px;
+        gap: 16px;
+      }
+
+      .header-card {
+        padding: 18px 16px;
+        gap: 16px;
+        border-radius: var(--radius-md);
+      }
+
+      .controls-row {
+        grid-template-columns: 1fr;
+      }
+
+      .search-input {
+        height: 46px;
+        font-size: 16px; /* Prevents auto-zoom on iOS */
+        padding-right: 76px;
+      }
+
+      .shortcut-badge {
+        display: none;
+      }
+
+      .links-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .card-item {
+        padding: 14px;
+      }
+
+      .links-list-mode .card-item {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .card-actions {
+        justify-content: flex-end;
+        width: 100%;
+      }
+
+      .open-link-btn {
+        flex: 1;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .title-group h1 {
+        font-size: 22px;
+      }
+
+      .logo-box {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Top Header & Search Panel -->
+    <header class="header-card">
+      <div class="header-top">
+        <div class="brand-section">
+          <div class="logo-box">⚡</div>
+          <div class="title-group">
+            <h1>OmniDesk Hub</h1>
+            <p>Unified Business Workspace & Dashboards Portal</p>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <button id="viewToggle" class="icon-btn" title="Toggle Grid / List View" aria-label="Toggle layout">
+            <span id="viewIcon">📱</span>
+          </button>
+          <button id="themeToggle" class="icon-btn" title="Toggle Dark / Light Theme" aria-label="Toggle theme">
+            <span id="themeIcon">🌙</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Controls & Search Bar -->
+      <div class="controls-row">
+        <div class="search-wrapper">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="search" 
+            id="searchInput" 
+            class="search-input" 
+            placeholder="Search dashboards, spreadsheets, forms..." 
+            autocomplete="off"
+            spellcheck="false"
+            aria-label="Search items"
+          >
+          <div class="search-right-tools">
+            <span class="shortcut-badge">/</span>
+            <button id="clearSearch" class="clear-btn" title="Clear search">&times;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Chips Bar -->
+      <div class="categories-bar" id="categoriesBar">
+        <button class="chip-btn active" data-category="all">
+          <span>✨ All Items</span>
+          <span class="chip-count" id="countAll">0</span>
+        </button>
+        <button class="chip-btn" data-category="favorites">
+          <span>⭐ Starred</span>
+          <span class="chip-count" id="countFavorites">0</span>
+        </button>
+        <button class="chip-btn" data-category="dashboards">
+          <span>📊 Dashboards</span>
+          <span class="chip-count" id="countDashboards">0</span>
+        </button>
+        <button class="chip-btn" data-category="sheets">
+          <span>📈 Google Sheets</span>
+          <span class="chip-count" id="countSheets">0</span>
+        </button>
+        <button class="chip-btn" data-category="docs">
+          <span>📝 Docs & Forms</span>
+          <span class="chip-count" id="countDocs">0</span>
+        </button>
+        <button class="chip-btn" data-category="apps">
+          <span>🌐 Web Apps</span>
+          <span class="chip-count" id="countApps">0</span>
+        </button>
+        <button class="chip-btn" data-category="tools">
+          <span>🧠 AI & Tools</span>
+          <span class="chip-count" id="countTools">0</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Sub Header Status -->
+    <div class="info-bar">
+      <div class="result-count">Showing <strong id="visibleCount">0</strong> workspace links</div>
+      <div id="activeFilterTag">Filter: All</div>
+    </div>
+
+    <!-- Main Items Container -->
+    <main id="linksContainer" class="links-grid">
+      <!-- Items dynamically populated via JS -->
+    </main>
+
+    <!-- Empty Results State -->
+    <div id="emptyState" class="empty-state">
+      <div class="empty-icon">🔍</div>
+      <div class="empty-title">No matching links found</div>
+      <div class="empty-desc">Try checking for typos or clear your category filters.</div>
+    </div>
+
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">
+    <span>📋</span>
+    <span id="toastMsg">Link copied to clipboard!</span>
+  </div>
+
+  <script>
+    // Master Array of Links & Categorization
+    const workspaceItems = [
+      {
+        id: "omnidesk-script",
+        title: "OmniDesk System",
+        url: "https://script.google.com/macros/s/AKfycbzeca-PajAGc6Jk0TYVvfpPBNuZktfpbcc2tYQ794XAi9DPR_Stpy-gmaYkvtwwXMZU/exec",
+        category: "apps",
+        icon: "⚡",
+        description: "Primary Google Apps Script OmniDesk web app"
+      },
+      {
+        id: "admin-my-system",
+        title: "Admin My System",
+        url: "https://lookerstudio.google.com/reporting/a91cad50-9fd8-490d-bcf5-48cc1edf183d",
+        category: "dashboards",
+        icon: "📊",
+        description: "Looker Studio System Admin reporting dashboard"
+      },
+      {
+        id: "daily-life-audit",
+        title: "Daily Life Audit",
+        url: "https://docs.google.com/forms/d/e/1FAIpQLSfcIeH9K-JJC0okL1RT_aq1j2crTP3db7A32-sSJp8l19tYJg/viewform",
+        category: "docs",
+        icon: "📋",
+        description: "Daily routine and habit tracking Google Form"
+      },
+      {
+        id: "gp-sheet",
+        title: "GP Sheet",
+        url: "https://docs.google.com/spreadsheets/d/1AjYqL6gL3j6uwDDDGywWWkUBfEiCIAAui42ZmRfBa_U/edit?gid=649136188#gid=649136188",
+        category: "sheets",
+        icon: "📈",
+        description: "General Performance & records master spreadsheet"
+      },
+      {
+        id: "checklist-61",
+        title: "CheckList 6.1",
+        url: "https://docs.google.com/spreadsheets/d/1iNc6atXddbCe1QUErmTWDa-ckLAKSqQei5mkJOBJbYM/edit?gid=541354850#gid=541354850",
+        category: "sheets",
+        icon: "✅",
+        description: "System process verification & audit checklist"
+      },
+      {
+        id: "ims-system",
+        title: "IMS System",
+        url: "https://docs.google.com/spreadsheets/d/1rIEVhMRWm-xtWnAQA4E_QvKoGflgNT6zA63daIxrbdc/edit?gid=516475266#gid=516475266",
+        category: "sheets",
+        icon: "📦",
+        description: "Inventory & Stock Management Google Sheet"
+      },
+      {
+        id: "budget-tracker",
+        title: "Budget Tracker System",
+        url: "https://docs.google.com/spreadsheets/d/13LUgyb-I6S04Wlq9M8guuFzyEbU1r2ZtZnhzwQ3-ilc/edit?gid=1762379637#gid=1762379637",
+        category: "sheets",
+        icon: "💰",
+        description: "Financial tracking and budget allocation sheet"
+      },
+      {
+        id: "search-bar-script",
+        title: "Search Bar Script Project",
+        url: "https://script.google.com/home/projects/1ZGVuUICOr4jsu03-Xc4EoMPjbDpWzH3i_d0Aww6pM3Dmu6vMeRGRaFpE/edit",
+        category: "tools",
+        icon: "🔍",
+        description: "Google Apps Script Search Bar Editor"
+      },
+      {
+        id: "mis-dashboard",
+        title: "MIS Dashboard",
+        url: "https://lookerstudio.google.com/reporting/1cd7c61b-713e-4ddb-a917-9e613b8d9524",
+        category: "dashboards",
+        icon: "📊",
+        description: "Management Information System analytics"
+      },
+      {
+        id: "machine-learning-dash",
+        title: "Machine Learning Analytics",
+        url: "https://lookerstudio.google.com/reporting/419ceb51-43b5-4ddf-8f89-80b5c28c946e",
+        category: "dashboards",
+        icon: "🤖",
+        description: "Looker Studio Machine Learning Insights"
+      },
+      {
+        id: "blackboard-site",
+        title: "Blackboard Website",
+        url: "https://sharmaakash7800.github.io/Blackboard/",
+        category: "apps",
+        icon: "🎓",
+        description: "Interactive digital blackboard live web site"
+      },
+      {
+        id: "ml-note-doc",
+        title: "ML Note",
+        url: "https://docs.google.com/document/d/1yGQkqI7PKsflAmNDRmryM1TpDMOIlzbycuO_r-394rg/edit?tab=t.gyqfubfijxlg#heading=h.musxi1756mn5",
+        category: "docs",
+        icon: "📄",
+        description: "Machine Learning study documentation & notes"
+      },
+      {
+        id: "store-planning-doc",
+        title: "Store Planning Document",
+        url: "https://docs.google.com/document/d/19r8skkqTZnqOrHth4VZ1kTkmwOLnlo4mQgHfAqixXuM/edit?tab=t.0",
+        category: "docs",
+        icon: "🏪",
+        description: "Retail and store expansion strategy plan"
+      },
+      {
+        id: "apna-dg-admin",
+        title: "Apna DG Store - Admin",
+        url: "https://sharmaakash7800.github.io/apna-dg-store/admin.html",
+        category: "apps",
+        icon: "⚙️",
+        description: "Store administration dashboard web application"
+      },
+      {
+        id: "apna-dg-customer",
+        title: "Apna DG Store Customer",
+        url: "https://sharmaakash7800.github.io/apna-dg-store/",
+        category: "apps",
+        icon: "🛍️",
+        description: "Customer store storefront web app"
+      },
+      {
+        id: "apna-dg-supabase",
+        title: "Apna DG Store Supabase",
+        url: "https://supabase.com/dashboard/project/xbzvnhhyataeciiysbhh/sql/11ceb9e6-91fa-46c5-8b35-97a4bb07d209",
+        category: "apps",
+        icon: "⚡",
+        description: "Supabase Database & Backend Console"
+      },
+      {
+        id: "dg-store-ims",
+        title: "DG Store IMS Web",
+        url: "https://sharmaakash7800.github.io/DG_IMS/",
+        category: "apps",
+        icon: "🏬",
+        description: "Inventory Management Web App"
+      },
+      {
+        id: "property-website",
+        title: "Shri Bheru Nath Property Dealer",
+        url: "https://sharmaakash7800.github.io/property-website/",
+        category: "apps",
+        icon: "🏠",
+        description: "Real estate listing & property website"
+      },
+      {
+        id: "property-inquiry-form",
+        title: "Property Inquiry Form",
+        url: "https://docs.google.com/forms/d/e/1FAIpQLSfXI_II-qqfPshWeJwCtYshghSan5YAijvf1RkjZM5rL1xZrQ/viewform?usp=sharing&ouid=109146852056270324227",
+        category: "docs",
+        icon: "📝",
+        description: "Aapki Property, Aapki Pasand Inquiry Form"
+      },
+      {
+        id: "shri-management-studies",
+        title: "Shri Management & Business Studies",
+        url: "https://docs.google.com/spreadsheets/d/1qWufTlPG-Qu47F_Ok9toa1G83fFaB38fhhF9t91QHBM/edit?gid=0#gid=0",
+        category: "sheets",
+        icon: "📚",
+        description: "Business management curriculum spreadsheet"
+      },
+      {
+        id: "google-analytics",
+        title: "Google Analytics Dashboard",
+        url: "https://analytics.google.com/analytics/web/#/a360521372p495572085/reports/intelligenthome?params=_u..nav%3Dmaui&collectionId=user",
+        category: "dashboards",
+        icon: "📈",
+        description: "Web traffic and visitor analytics portal"
+      },
+      {
+        id: "email-advertisement",
+        title: "Email Advertisement Tracker",
+        url: "https://docs.google.com/spreadsheets/d/1GWqgqkjsj1oz56qQcqR8sSdmJnmdKrZf56aT4v5sJOE/edit?gid=1994925139#gid=1994925139",
+        category: "sheets",
+        icon: "📧",
+        description: "Marketing and email campaign tracker"
+      },
+      {
+        id: "activity-cost-analyzer",
+        title: "Activity Cost Analyzer",
+        url: "https://docs.google.com/spreadsheets/d/1u4CK0FXMShXpYHKjHjJrcERFHzscrbPgGCGFfUGS4i4/edit?gid=95172440#gid=95172440",
+        category: "sheets",
+        icon: "📊",
+        description: "Cost calculation and expense analysis sheet"
+      },
+      {
+        id: "mind-map-book",
+        title: "Mind Map Book Website",
+        url: "https://sites.google.com/view/mind-shaping?usp=sharing",
+        category: "tools",
+        icon: "🧠",
+        description: "Mind shaping and visual learning resources"
+      },
+      {
+        id: "notebook-lm",
+        title: "NotebookLM AI",
+        url: "https://notebooklm.google.com/",
+        category: "tools",
+        icon: "✨",
+        description: "Google AI research assistant notebook"
+      },
+      {
+        id: "perplexity-ai",
+        title: "Perplexity AI",
+        url: "https://www.perplexity.ai/",
+        category: "tools",
+        icon: "🔮",
+        description: "AI search and research workspace"
+      },
+      {
+        id: "notion-workspace",
+        title: "Notion Workspace",
+        url: "https://www.notion.so/",
+        category: "tools",
+        icon: "📓",
+        description: "Notes, wiki, and project database"
+      },
+      {
+        id: "automated-resume-sender",
+        title: "Automated Resume Sender",
+        url: "https://docs.google.com/spreadsheets/d/1wqUfFaVKGKcNMg-V6JSkg9crXmdn5xlSInklXp-kVRw/edit?gid=0#gid=0",
+        category: "sheets",
+        icon: "💼",
+        description: "Automated job application & resume tracking sheet"
+      },
+      {
+        id: "business-script",
+        title: "Business Script",
+        url: "https://docs.google.com/document/d/11MyUDXQjR_0czsm1POBN-rdt2wyQb7ImGzks8KKNBto/edit?tab=t.0",
+        category: "docs",
+        icon: "📜",
+        description: "Standard operating scripts & guidelines"
+      },
+      {
+        id: "business-model",
+        title: "Business Model Sheet",
+        url: "https://docs.google.com/spreadsheets/d/1xuXK29s5KutbOSzHjheKD3y5jnhMjER0/edit?gid=142952597#gid=142952597",
+        category: "sheets",
+        icon: "📈",
+        description: "Revenue modeling and business architecture"
+      }
+    ];
+
+    // State Management
+    let currentCategory = "all";
+    let searchQuery = "";
+    let isListView = false;
+    let starredIds = JSON.parse(localStorage.getItem("omnidesk_starred") || "[]");
+
+    // Elements
+    const linksContainer = document.getElementById("linksContainer");
+    const searchInput = document.getElementById("searchInput");
+    const clearSearch = document.getElementById("clearSearch");
+    const categoriesBar = document.getElementById("categoriesBar");
+    const emptyState = document.getElementById("emptyState");
+    const visibleCount = document.getElementById("visibleCount");
+    const activeFilterTag = document.getElementById("activeFilterTag");
+    const viewToggle = document.getElementById("viewToggle");
+    const viewIcon = document.getElementById("viewIcon");
+    const themeToggle = document.getElementById("themeToggle");
+    const themeIcon = document.getElementById("themeIcon");
+
+    // Category Label Mapping
+    const categoryNames = {
+      all: "All Items",
+      favorites: "Starred Items",
+      dashboards: "Dashboards",
+      sheets: "Google Sheets",
+      docs: "Docs & Forms",
+      apps: "Web Apps",
+      tools: "AI & Tools"
+    };
+
+    // Calculate Category Counts
+    function updateCounts() {
+      const counts = {
+        all: workspaceItems.length,
+        favorites: starredIds.length,
+        dashboards: 0,
+        sheets: 0,
+        docs: 0,
+        apps: 0,
+        tools: 0
+      };
+
+      workspaceItems.forEach(item => {
+        if (counts[item.category] !== undefined) {
+          counts[item.category]++;
+        }
+      });
+
+      document.getElementById("countAll").textContent = counts.all;
+      document.getElementById("countFavorites").textContent = counts.favorites;
+      document.getElementById("countDashboards").textContent = counts.dashboards;
+      document.getElementById("countSheets").textContent = counts.sheets;
+      document.getElementById("countDocs").textContent = counts.docs;
+      document.getElementById("countApps").textContent = counts.apps;
+      document.getElementById("countTools").textContent = counts.tools;
+    }
+
+    // Toggle Favorite
+    function toggleStar(itemId, event) {
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+
+      if (starredIds.includes(itemId)) {
+        starredIds = starredIds.filter(id => id !== itemId);
+        showToast("Removed from Starred");
+      } else {
+        starredIds.push(itemId);
+        showToast("⭐ Added to Starred!");
+      }
+
+      localStorage.setItem("omnidesk_starred", JSON.stringify(starredIds));
+      updateCounts();
+      renderItems();
+    }
+
+    // Copy Link to Clipboard
+    function copyUrl(url, event) {
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+
+      navigator.clipboard.writeText(url).then(() => {
+        showToast("📋 Link copied to clipboard!");
+      }).catch(() => {
+        showToast("Failed to copy link");
+      });
+    }
+
+    // Toast Notification
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      document.getElementById("toastMsg").textContent = msg;
+      toast.classList.add("show");
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2500);
+    }
+
+    // Clean URL Preview
+    function formatUrlPreview(url) {
+      try {
+        const parsed = new URL(url);
+        return parsed.hostname.replace("www.", "");
+      } catch (e) {
+        return url;
+      }
+    }
+
+    // Render Cards/List Items
+    function renderItems() {
+      linksContainer.innerHTML = "";
+      
+      const filtered = workspaceItems.filter(item => {
+        // Category Match
+        let categoryMatch = false;
+        if (currentCategory === "all") {
+          categoryMatch = true;
+        } else if (currentCategory === "favorites") {
+          categoryMatch = starredIds.includes(item.id);
+        } else {
+          categoryMatch = item.category === currentCategory;
+        }
+
+        // Search Match
+        const q = searchQuery.toLowerCase();
+        const searchMatch = !q || 
+          item.title.toLowerCase().includes(q) || 
+          item.description.toLowerCase().includes(q) || 
+          item.url.toLowerCase().includes(q);
+
+        return categoryMatch && searchMatch;
+      });
+
+      visibleCount.textContent = filtered.length;
+      activeFilterTag.textContent = `Filter: ${categoryNames[currentCategory] || 'Custom'}`;
+
+      if (filtered.length === 0) {
+        emptyState.classList.add("visible");
+      } else {
+        emptyState.classList.remove("visible");
+
+        filtered.forEach(item => {
+          const isStarred = starredIds.includes(item.id);
+
+          const cardHtml = `
+            <a class="card-item" href="${item.url}" target="_blank" rel="noopener noreferrer">
+              <div class="card-main-info">
+                <div class="card-icon">${item.icon}</div>
+                <div class="card-text">
+                  <div class="card-title">${item.title}</div>
+                  <div class="card-url-preview">
+                    🔗 ${formatUrlPreview(item.url)}
+                  </div>
+                  <div class="card-tag">${item.category}</div>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="action-btn star-btn ${isStarred ? 'starred' : ''}" 
+                  title="${isStarred ? 'Unstar' : 'Star'}" 
+                  onclick="toggleStar('${item.id}', event)">
+                  ${isStarred ? '★' : '☆'}
+                </button>
+
+                <button class="action-btn" 
+                  title="Copy URL" 
+                  onclick="copyUrl('${item.url}', event)">
+                  📋
+                </button>
+
+                <span class="open-link-btn">
+                  Open ↗
+                </span>
+              </div>
+            </a>
+          `;
+
+          linksContainer.insertAdjacentHTML("beforeend", cardHtml);
+        });
+      }
+    }
+
+    // Filter Chips Event Listener
+    categoriesBar.addEventListener("click", (e) => {
+      const chip = e.target.closest(".chip-btn");
+      if (!chip) return;
+
+      document.querySelectorAll(".chip-btn").forEach(btn => btn.classList.remove("active"));
+      chip.classList.add("active");
+
+      currentCategory = chip.dataset.category;
+      renderItems();
+    });
+
+    // Search Input Listener
+    searchInput.addEventListener("input", (e) => {
+      searchQuery = e.target.value.trim();
+      clearSearch.classList.toggle("visible", searchQuery.length > 0);
+      renderItems();
+    });
+
+    // Clear Search Button
+    clearSearch.addEventListener("click", () => {
+      searchInput.value = "";
+      searchQuery = "";
+      clearSearch.classList.remove("visible");
+      searchInput.focus();
+      renderItems();
+    });
+
+    // Keyboard Shortcuts (/ to search, Esc to clear, Enter to open top result)
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "/" && document.activeElement !== searchInput) {
+        e.preventDefault();
+        searchInput.focus();
+      } else if (e.key === "Escape" && document.activeElement === searchInput) {
+        searchInput.value = "";
+        searchQuery = "";
+        clearSearch.classList.remove("visible");
+        renderItems();
+        searchInput.blur();
+      } else if (e.key === "Enter" && document.activeElement === searchInput) {
+        const firstCard = linksContainer.querySelector(".card-item");
+        if (firstCard) {
+          window.open(firstCard.href, "_blank");
+        }
+      }
+    });
+
+    // View Toggle (Grid / List)
+    viewToggle.addEventListener("click", () => {
+      isListView = !isListView;
+      if (isListView) {
+        linksContainer.className = "links-list-mode";
+        viewIcon.textContent = "📑";
+        showToast("Switched to List View");
+      } else {
+        linksContainer.className = "links-grid";
+        viewIcon.textContent = "📱";
+        showToast("Switched to Grid View");
+      }
+    });
+
+    // Theme Toggle (Dark / Light)
+    themeToggle.addEventListener("click", () => {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      const nextTheme = currentTheme === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", nextTheme);
+      themeIcon.textContent = nextTheme === "dark" ? "🌙" : "☀️";
+      localStorage.setItem("omnidesk_theme", nextTheme);
+      showToast(`Switched to ${nextTheme.toUpperCase()} theme`);
+    });
+
+    // Load saved Theme
+    const savedTheme = localStorage.getItem("omnidesk_theme");
+    if (savedTheme) {
+      document.documentElement.setAttribute("data-theme", savedTheme);
+      themeIcon.textContent = savedTheme === "dark" ? "🌙" : "☀️";
+    }
+
+    // Initialize Page
+    updateCounts();
+    renderItems();
+  </script>
+
+</body>
+</html>
