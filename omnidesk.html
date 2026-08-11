@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-  <title>OmniDesk - Unified Workspace & Dashboards Hub</title>
+  <title>OmniDesk - Workspace & Dashboards Hub</title>
   <meta name="description" content="OmniDesk is your central hub for dashboards, Google Sheets, business management tools, and project links.">
   
   <!-- Open Graph / Social Meta -->
@@ -14,7 +14,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -98,10 +98,10 @@
     .app-container {
       max-width: 1280px;
       margin: 0 auto;
-      padding: 20px 16px 60px;
+      padding: 16px 14px 50px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 16px;
       min-height: 100vh;
     }
 
@@ -112,7 +112,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.65);
       backdrop-filter: blur(4px);
       z-index: 9998;
       opacity: 0;
@@ -130,7 +130,7 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 300px;
+      width: 290px;
       max-width: 85vw;
       height: 100vh;
       background: var(--bg-card);
@@ -142,8 +142,8 @@
       display: flex;
       flex-direction: column;
       overflow-y: auto;
-      padding: 24px 20px;
-      gap: 24px;
+      padding: 20px 18px;
+      gap: 20px;
     }
 
     .mobile-drawer.open {
@@ -155,7 +155,7 @@
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid var(--border-color);
-      padding-bottom: 16px;
+      padding-bottom: 14px;
     }
 
     .drawer-close-btn {
@@ -170,7 +170,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.2s ease;
     }
 
     .drawer-close-btn:hover {
@@ -184,13 +183,13 @@
       text-transform: uppercase;
       letter-spacing: 1px;
       color: var(--text-dim);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .drawer-nav-list {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
       list-style: none;
     }
 
@@ -198,16 +197,15 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 14px;
+      padding: 10px 12px;
       border-radius: var(--radius-md);
       background: transparent;
       border: 1px solid transparent;
       color: var(--text-muted);
       font-weight: 600;
-      font-size: 14px;
+      font-size: 13px;
       cursor: pointer;
       transition: all 0.2s ease;
-      text-decoration: none;
     }
 
     .drawer-nav-item:hover, .drawer-nav-item.active {
@@ -220,39 +218,62 @@
       padding: 2px 8px;
       border-radius: 10px;
       background: rgba(255, 255, 255, 0.1);
-      font-size: 12px;
+      font-size: 11px;
     }
 
-    /* Top Glass Header */
+    .drawer-add-btn {
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--primary) 0%, #2563eb 100%);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+      transition: all 0.2s ease;
+      width: 100%;
+    }
+
+    .drawer-add-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+    }
+
+    /* Top Clean Header */
     .header-card {
       background: var(--bg-surface);
       backdrop-filter: var(--glass-backdrop);
       -webkit-backdrop-filter: var(--glass-backdrop);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
-      padding: 20px 24px;
+      padding: 16px 20px;
       box-shadow: var(--shadow-md);
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
     }
 
     .header-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
     }
 
     .brand-group {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .menu-toggle-btn {
-      width: 42px;
-      height: 42px;
+      width: 40px;
+      height: 40px;
       border-radius: var(--radius-md);
       border: 1px solid var(--border-color);
       background: var(--bg-card);
@@ -271,34 +292,28 @@
     }
 
     .logo-box {
-      width: 44px;
-      height: 44px;
+      width: 38px;
+      height: 38px;
       border-radius: var(--radius-md);
       background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
       display: flex;
       align-items: center;
       justify-content: center;
       color: #ffffff;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 800;
       box-shadow: var(--shadow-glow);
     }
 
     .title-group h1 {
       font-family: 'Outfit', sans-serif;
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 700;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.3px;
       background: linear-gradient(135deg, var(--text-main) 30%, var(--primary) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       line-height: 1.2;
-    }
-
-    .title-group p {
-      font-size: 12px;
-      color: var(--text-muted);
-      font-weight: 500;
     }
 
     .header-actions {
@@ -307,32 +322,9 @@
       gap: 8px;
     }
 
-    .add-link-btn {
-      padding: 0 14px;
-      height: 42px;
-      border-radius: var(--radius-md);
-      background: linear-gradient(135deg, var(--primary) 0%, #2563eb 100%);
-      color: #ffffff;
-      font-size: 13px;
-      font-weight: 700;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
-      transition: all 0.2s ease;
-      white-space: nowrap;
-    }
-
-    .add-link-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
-    }
-
     .icon-btn {
-      width: 42px;
-      height: 42px;
+      width: 40px;
+      height: 40px;
       border-radius: var(--radius-md);
       border: 1px solid var(--border-color);
       background: var(--bg-card);
@@ -341,7 +333,7 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-size: 18px;
+      font-size: 17px;
       transition: all 0.2s ease;
     }
 
@@ -358,23 +350,23 @@
 
     .search-icon {
       position: absolute;
-      left: 16px;
+      left: 14px;
       top: 50%;
       transform: translateY(-50%);
       color: var(--text-muted);
       pointer-events: none;
-      font-size: 18px;
+      font-size: 16px;
     }
 
     .search-input {
       width: 100%;
-      height: 48px;
-      padding: 12px 90px 12px 46px;
+      height: 44px;
+      padding: 10px 80px 10px 42px;
       border-radius: var(--radius-md);
       border: 1px solid var(--border-color);
       background: var(--bg-card);
       color: var(--text-main);
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 500;
       outline: none;
       transition: all 0.2s ease;
@@ -388,7 +380,7 @@
 
     .search-right-tools {
       position: absolute;
-      right: 12px;
+      right: 10px;
       top: 50%;
       transform: translateY(-50%);
       display: flex;
@@ -397,7 +389,7 @@
     }
 
     .shortcut-badge {
-      padding: 3px 7px;
+      padding: 2px 6px;
       border-radius: 6px;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid var(--border-color);
@@ -413,8 +405,8 @@
       color: var(--text-muted);
       font-size: 18px;
       cursor: pointer;
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
       display: none;
       align-items: center;
@@ -429,7 +421,7 @@
     .categories-bar {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       overflow-x: auto;
       padding-bottom: 2px;
       scrollbar-width: none;
@@ -444,12 +436,12 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      padding: 7px 14px;
+      padding: 6px 12px;
       border-radius: 30px;
       border: 1px solid var(--border-color);
       background: var(--bg-card);
       color: var(--text-muted);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
       white-space: nowrap;
       cursor: pointer;
@@ -465,14 +457,14 @@
       background: linear-gradient(135deg, var(--primary) 0%, #2563eb 100%);
       color: #ffffff;
       border-color: var(--primary);
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
     }
 
     .chip-count {
-      padding: 2px 7px;
-      border-radius: 12px;
+      padding: 1px 6px;
+      border-radius: 10px;
       background: rgba(255, 255, 255, 0.15);
-      font-size: 11px;
+      font-size: 10px;
     }
 
     /* Bar Info */
@@ -480,8 +472,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 4px;
-      font-size: 13px;
+      padding: 0 2px;
+      font-size: 12px;
       color: var(--text-muted);
       font-weight: 500;
     }
@@ -494,90 +486,80 @@
     .category-group-section {
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      margin-bottom: 24px;
+      gap: 10px;
+      margin-bottom: 20px;
     }
 
     .category-header-title {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 8px 12px;
-      border-bottom: 2px solid var(--border-color);
+      padding: 6px 8px;
+      border-bottom: 1px dashed var(--border-color);
       color: var(--text-main);
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 700;
       font-family: 'Outfit', sans-serif;
     }
 
     .category-header-title .cat-badge-count {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
-      padding: 2px 8px;
-      border-radius: 12px;
+      padding: 1px 7px;
+      border-radius: 10px;
       background: var(--primary-light);
       color: var(--primary);
     }
 
-    /* Grid vs List Containers */
+    /* Sleek Cards Layout */
     .links-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 14px;
+      gap: 10px;
       width: 100%;
     }
 
-    .links-list-mode {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    /* Card Component */
+    /* Entire Card is a Direct Clickable Link */
     .card-item {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
-      padding: 14px 16px;
+      padding: 12px 14px;
       display: flex;
-      flex-direction: column;
+      align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
       position: relative;
-      overflow: hidden;
       backdrop-filter: var(--glass-backdrop);
-      transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
+      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
       text-decoration: none;
+      color: var(--text-main);
+      cursor: pointer;
     }
 
     .card-item:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
       border-color: var(--border-hover);
       box-shadow: var(--shadow-md), var(--shadow-glow);
       background: var(--bg-card-hover);
     }
 
-    .links-list-mode .card-item {
-      flex-direction: row;
-      align-items: center;
-    }
-
     .card-main-info {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       min-width: 0;
       flex: 1;
     }
 
     .card-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 18px;
       flex-shrink: 0;
       background: var(--primary-light);
       color: var(--primary);
@@ -587,7 +569,14 @@
     .card-text {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 1px;
+      min-width: 0;
+    }
+
+    .card-title-row {
+      display: flex;
+      align-items: center;
+      gap: 4px;
       min-width: 0;
     }
 
@@ -600,6 +589,19 @@
       text-overflow: ellipsis;
     }
 
+    .card-external-arrow {
+      font-size: 12px;
+      color: var(--primary);
+      opacity: 0.7;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .card-item:hover .card-external-arrow {
+      opacity: 1;
+      transform: translate(2px, -2px);
+    }
+
     .card-url-preview {
       font-size: 11px;
       color: var(--text-dim);
@@ -608,43 +610,17 @@
       text-overflow: ellipsis;
     }
 
-    .card-tag-row {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .card-tag {
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      padding: 2px 7px;
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.06);
-      color: var(--text-muted);
-      letter-spacing: 0.5px;
-    }
-
-    .custom-badge {
-      font-size: 10px;
-      font-weight: 700;
-      padding: 2px 6px;
-      border-radius: 6px;
-      background: rgba(139, 92, 246, 0.2);
-      color: var(--accent);
-    }
-
     .card-actions {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
       flex-shrink: 0;
     }
 
     .action-btn {
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
       border: 1px solid var(--border-color);
       background: rgba(255, 255, 255, 0.04);
       color: var(--text-muted);
@@ -652,7 +628,7 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 13px;
       transition: all 0.2s ease;
     }
 
@@ -672,28 +648,6 @@
       background: rgba(239, 68, 68, 0.15);
       color: #ef4444;
       border-color: #ef4444;
-    }
-
-    .open-link-btn {
-      padding: 0 12px;
-      height: 34px;
-      border-radius: 8px;
-      background: var(--primary);
-      color: #ffffff;
-      font-size: 12px;
-      font-weight: 600;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      white-space: nowrap;
-    }
-
-    .open-link-btn:hover {
-      background: var(--primary-hover);
     }
 
     /* Modal Component */
@@ -722,15 +676,15 @@
 
     .modal-box {
       width: 100%;
-      max-width: 460px;
+      max-width: 440px;
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
-      padding: 24px;
+      padding: 22px;
       box-shadow: var(--shadow-md);
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 16px;
       transform: scale(0.9);
       transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
@@ -747,7 +701,7 @@
 
     .modal-title {
       font-family: 'Outfit', sans-serif;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
       color: var(--text-main);
     }
@@ -755,19 +709,19 @@
     .form-group {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 5px;
     }
 
     .form-label {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
       color: var(--text-muted);
     }
 
     .form-input, .form-select {
       width: 100%;
-      height: 44px;
-      padding: 10px 14px;
+      height: 42px;
+      padding: 8px 12px;
       border-radius: var(--radius-sm);
       border: 1px solid var(--border-color);
       background: rgba(255, 255, 255, 0.05);
@@ -791,29 +745,31 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      gap: 10px;
-      margin-top: 6px;
+      gap: 8px;
+      margin-top: 4px;
     }
 
     .btn-secondary {
-      padding: 0 16px;
-      height: 40px;
+      padding: 0 14px;
+      height: 38px;
       border-radius: var(--radius-sm);
       border: 1px solid var(--border-color);
       background: transparent;
       color: var(--text-muted);
       font-weight: 600;
+      font-size: 13px;
       cursor: pointer;
     }
 
     .btn-primary {
-      padding: 0 20px;
-      height: 40px;
+      padding: 0 18px;
+      height: 38px;
       border-radius: var(--radius-sm);
       border: none;
       background: var(--primary);
       color: #ffffff;
       font-weight: 700;
+      font-size: 13px;
       cursor: pointer;
     }
 
@@ -822,15 +778,15 @@
       background: rgba(15, 23, 42, 0.6);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
-      padding: 16px;
+      padding: 14px;
       font-size: 12px;
       color: var(--text-muted);
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     .code-snippet {
       background: rgba(0, 0, 0, 0.4);
-      padding: 8px 12px;
+      padding: 8px 10px;
       border-radius: 6px;
       font-family: monospace;
       color: #38bdf8;
@@ -845,8 +801,8 @@
       right: 20px;
       background: #1e293b;
       color: #ffffff;
-      padding: 12px 18px;
-      border-radius: 10px;
+      padding: 10px 16px;
+      border-radius: 8px;
       border: 1px solid var(--primary);
       box-shadow: var(--shadow-md);
       font-size: 13px;
@@ -865,37 +821,30 @@
       opacity: 1;
     }
 
-    /* Responsive Breakdown */
-    @media (max-width: 768px) {
+    /* Mobile Breakpoint */
+    @media (max-width: 640px) {
       .app-container {
-        padding: 12px 10px 40px;
-        gap: 14px;
+        padding: 10px 8px 30px;
+        gap: 10px;
       }
 
       .header-card {
-        padding: 14px 16px;
+        padding: 12px 14px;
         border-radius: var(--radius-md);
+        gap: 10px;
       }
 
       .title-group h1 {
-        font-size: 20px;
-      }
-
-      .add-link-btn span {
-        display: none;
-      }
-
-      .add-link-btn {
-        padding: 0 12px;
+        font-size: 18px;
       }
 
       .links-grid {
         grid-template-columns: 1fr;
+        gap: 8px;
       }
 
-      .links-list-mode .card-item {
-        flex-direction: column;
-        align-items: stretch;
+      .card-item {
+        padding: 10px 12px;
       }
     }
   </style>
@@ -910,7 +859,6 @@
         <div class="logo-box">⚡</div>
         <div class="title-group">
           <h1>OmniDesk Menu</h1>
-          <p>Navigation Drawer</p>
         </div>
       </div>
       <button id="closeDrawerBtn" class="drawer-close-btn" aria-label="Close Drawer">&times;</button>
@@ -923,8 +871,8 @@
       </ul>
     </div>
 
-    <div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px;">
-      <button id="drawerAddLinkBtn" class="add-link-btn" style="width: 100%; justify-content: center;">
+    <div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px;">
+      <button id="drawerAddLinkBtn" class="drawer-add-btn">
         ➕ Add New Custom Link
       </button>
       <button id="helpCodeBtn" class="btn-secondary" style="width: 100%;">
@@ -936,27 +884,20 @@
   <!-- App Main Container -->
   <div class="app-container">
     
-    <!-- Top Header -->
+    <!-- Top Clean Header -->
     <header class="header-card">
       <div class="header-top">
         <div class="brand-group">
-          <button id="menuToggleBtn" class="menu-toggle-btn" title="Open Navigation Menu" aria-label="Open Navigation Menu">
+          <button id="menuToggleBtn" class="menu-toggle-btn" title="Open Menu" aria-label="Open Menu">
             ☰
           </button>
           <div class="logo-box">⚡</div>
           <div class="title-group">
             <h1>OmniDesk Hub</h1>
-            <p>Unified Business Workspace & Dashboards Portal</p>
           </div>
         </div>
 
         <div class="header-actions">
-          <button id="openAddModalBtn" class="add-link-btn" title="Add Custom Link">
-            ➕ <span>Add Link</span>
-          </button>
-          <button id="viewToggle" class="icon-btn" title="Toggle Grid / List View" aria-label="Toggle layout">
-            <span id="viewIcon">📱</span>
-          </button>
           <button id="themeToggle" class="icon-btn" title="Toggle Dark / Light Theme" aria-label="Toggle theme">
             <span id="themeIcon">🌙</span>
           </button>
@@ -983,7 +924,7 @@
       <!-- Category Filter Chips -->
       <div class="categories-bar" id="categoriesBar">
         <button class="chip-btn active" data-category="all">
-          <span>✨ All Items</span>
+          <span>✨ All</span>
           <span class="chip-count" id="countAll">0</span>
         </button>
         <button class="chip-btn" data-category="favorites">
@@ -1015,8 +956,8 @@
 
     <!-- Sub Header Status -->
     <div class="info-bar">
-      <div class="result-count">Showing <strong id="visibleCount">0</strong> workspace links</div>
-      <div id="activeFilterTag">Filter: All Items</div>
+      <div class="result-count">Showing <strong id="visibleCount">0</strong> links</div>
+      <div id="activeFilterTag">Filter: All</div>
     </div>
 
     <!-- Main Items Container -->
@@ -1040,12 +981,12 @@
           <input type="text" id="linkTitle" class="form-input" placeholder="e.g., Sales Tracker 2026" required>
         </div>
 
-        <div class="form-group" style="margin-top: 12px;">
+        <div class="form-group" style="margin-top: 10px;">
           <label class="form-label" for="linkUrl">Full Target URL *</label>
           <input type="url" id="linkUrl" class="form-input" placeholder="https://docs.google.com/..." required>
         </div>
 
-        <div class="form-group" style="margin-top: 12px;">
+        <div class="form-group" style="margin-top: 10px;">
           <label class="form-label" for="linkCategory">Category *</label>
           <select id="linkCategory" class="form-select" required>
             <option value="dashboards">📊 Dashboards</option>
@@ -1056,7 +997,7 @@
           </select>
         </div>
 
-        <div class="form-group" style="margin-top: 12px;">
+        <div class="form-group" style="margin-top: 10px;">
           <label class="form-label" for="linkIcon">Icon Emoji (Optional)</label>
           <input type="text" id="linkIcon" class="form-input" placeholder="e.g., ⚡ or 📊">
         </div>
@@ -1078,15 +1019,14 @@
       </div>
 
       <div class="code-help-card">
-        <p>Permanently code me naya link add karne ke liye <code>index.html</code> file me <strong>workspaceItems</strong> array me naya item object add karein:</p>
+        <p>Permanently code me naya link add karne ke liye <code>index.html</code> file me <strong>defaultWorkspaceItems</strong> array me naya item object add karein:</p>
         <div class="code-snippet">
 {<br>
 &nbsp;&nbsp;id: "my-custom-link",<br>
 &nbsp;&nbsp;title: "My New Sheet",<br>
 &nbsp;&nbsp;url: "https://docs.google.com/...",<br>
 &nbsp;&nbsp;category: "sheets",<br>
-&nbsp;&nbsp;icon: "📈",<br>
-&nbsp;&nbsp;description: "Custom sheet link"<br>
+&nbsp;&nbsp;icon: "📈"<br>
 }
         </div>
       </div>
@@ -1111,299 +1051,261 @@
         title: "Primary System Dashboard",
         url: "https://datastudio.google.com/reporting/03414a12-4c7f-42dc-aa8f-8840ddfb9d64",
         category: "dashboards",
-        icon: "📊",
-        description: "Main System Reporting Dashboard"
+        icon: "📊"
       },
       {
         id: "delegation-system",
         title: "Delegation System",
         url: "https://script.google.com/macros/s/AKfycbyxssr1bJw564ngnJhdH_rTpDuDDcGUAeIlcI2In5wFA56p0MVpf7ZNMfhZpL-uaQzm/exec",
         category: "apps",
-        icon: "⚡",
-        description: "Task Delegation System"
+        icon: "⚡"
       },
       {
         id: "daily-budget-tracker-dash",
         title: "Daily Budget Tracker Dashboard",
         url: "https://datastudio.google.com/reporting/3ef8313d-8567-4e62-94f4-e3933a39610c",
         category: "dashboards",
-        icon: "💰",
-        description: "Daily Budget Tracking Analytics"
+        icon: "💰"
       },
       {
         id: "checklist-dashboard",
         title: "CheckList Dashboard",
         url: "https://datastudio.google.com/reporting/643c5bf5-e628-41bd-8dab-db656f7848e4",
         category: "dashboards",
-        icon: "✅",
-        description: "System Process Checklist Reporting"
+        icon: "✅"
       },
       {
         id: "store-data-analysis",
         title: "Store Data Analysis",
         url: "https://datastudio.google.com/reporting/acf01be8-f008-4ec8-a1e4-38f60dc98e3a",
         category: "dashboards",
-        icon: "🏪",
-        description: "Retail Store Data Analytics & Insights"
+        icon: "🏪"
       },
       {
         id: "inventory-performance-gp",
         title: "Inventory Performance Dashboard (GP)",
         url: "https://datastudio.google.com/reporting/2bb9c0bc-6f26-445d-a2a7-734b4c8976a9",
         category: "dashboards",
-        icon: "📦",
-        description: "GP Stock & Inventory Performance"
+        icon: "📦"
       },
       {
         id: "omnidesk-script",
         title: "OmniDesk System",
         url: "https://script.google.com/macros/s/AKfycbzeca-PajAGc6Jk0TYVvfpPBNuZktfpbcc2tYQ794XAi9DPR_Stpy-gmaYkvtwwXMZU/exec",
         category: "apps",
-        icon: "⚡",
-        description: "Primary Google Apps Script OmniDesk web app"
+        icon: "⚡"
       },
       {
         id: "admin-my-system",
         title: "Admin My System",
         url: "https://lookerstudio.google.com/reporting/a91cad50-9fd8-490d-bcf5-48cc1edf183d",
         category: "dashboards",
-        icon: "📊",
-        description: "Looker Studio System Admin reporting dashboard"
+        icon: "📊"
       },
       {
         id: "daily-life-audit",
         title: "Daily Life Audit",
         url: "https://docs.google.com/forms/d/e/1FAIpQLSfcIeH9K-JJC0okL1RT_aq1j2crTP3db7A32-sSJp8l19tYJg/viewform",
         category: "docs",
-        icon: "📋",
-        description: "Daily routine and habit tracking Google Form"
+        icon: "📋"
       },
       {
         id: "gp-sheet",
         title: "GP Sheet",
         url: "https://docs.google.com/spreadsheets/d/1AjYqL6gL3j6uwDDDGywWWkUBfEiCIAAui42ZmRfBa_U/edit?gid=649136188#gid=649136188",
         category: "sheets",
-        icon: "📈",
-        description: "General Performance & records master spreadsheet"
+        icon: "📈"
       },
       {
         id: "checklist-61",
         title: "CheckList 6.1",
         url: "https://docs.google.com/spreadsheets/d/1iNc6atXddbCe1QUErmTWDa-ckLAKSqQei5mkJOBJbYM/edit?gid=541354850#gid=541354850",
         category: "sheets",
-        icon: "✅",
-        description: "System process verification & audit checklist"
+        icon: "✅"
       },
       {
         id: "ims-system",
         title: "IMS System",
         url: "https://docs.google.com/spreadsheets/d/1rIEVhMRWm-xtWnAQA4E_QvKoGflgNT6zA63daIxrbdc/edit?gid=516475266#gid=516475266",
         category: "sheets",
-        icon: "📦",
-        description: "Inventory & Stock Management Google Sheet"
+        icon: "📦"
       },
       {
         id: "budget-tracker",
         title: "Budget Tracker System",
         url: "https://docs.google.com/spreadsheets/d/13LUgyb-I6S04Wlq9M8guuFzyEbU1r2ZtZnhzwQ3-ilc/edit?gid=1762379637#gid=1762379637",
         category: "sheets",
-        icon: "💰",
-        description: "Financial tracking and budget allocation sheet"
+        icon: "💰"
       },
       {
         id: "search-bar-script",
         title: "Search Bar Script Project",
         url: "https://script.google.com/home/projects/1ZGVuUICOr4jsu03-Xc4EoMPjbDpWzH3i_d0Aww6pM3Dmu6vMeRGRaFpE/edit",
         category: "tools",
-        icon: "🔍",
-        description: "Google Apps Script Search Bar Editor"
+        icon: "🔍"
       },
       {
         id: "mis-dashboard",
         title: "MIS Dashboard",
         url: "https://lookerstudio.google.com/reporting/1cd7c61b-713e-4ddb-a917-9e613b8d9524",
         category: "dashboards",
-        icon: "📊",
-        description: "Management Information System analytics"
+        icon: "📊"
       },
       {
         id: "machine-learning-dash",
         title: "Machine Learning Analytics",
         url: "https://lookerstudio.google.com/reporting/419ceb51-43b5-4ddf-8f89-80b5c28c946e",
         category: "dashboards",
-        icon: "🤖",
-        description: "Looker Studio Machine Learning Insights"
+        icon: "🤖"
       },
       {
         id: "blackboard-site",
         title: "Blackboard Website",
         url: "https://sharmaakash7800.github.io/Blackboard/",
         category: "apps",
-        icon: "🎓",
-        description: "Interactive digital blackboard live web site"
+        icon: "🎓"
       },
       {
         id: "ml-note-doc",
         title: "ML Note",
         url: "https://docs.google.com/document/d/1yGQkqI7PKsflAmNDRmryM1TpDMOIlzbycuO_r-394rg/edit?tab=t.gyqfubfijxlg#heading=h.musxi1756mn5",
         category: "docs",
-        icon: "📄",
-        description: "Machine Learning study documentation & notes"
+        icon: "📄"
       },
       {
         id: "store-planning-doc",
         title: "Store Planning Document",
         url: "https://docs.google.com/document/d/19r8skkqTZnqOrHth4VZ1kTkmwOLnlo4mQgHfAqixXuM/edit?tab=t.0",
         category: "docs",
-        icon: "🏪",
-        description: "Retail and store expansion strategy plan"
+        icon: "🏪"
       },
       {
         id: "apna-dg-admin",
         title: "Apna DG Store - Admin",
         url: "https://sharmaakash7800.github.io/apna-dg-store/admin.html",
         category: "apps",
-        icon: "⚙️",
-        description: "Store administration dashboard web application"
+        icon: "⚙️"
       },
       {
         id: "apna-dg-customer",
         title: "Apna DG Store Customer",
         url: "https://sharmaakash7800.github.io/apna-dg-store/",
         category: "apps",
-        icon: "🛍️",
-        description: "Customer store storefront web app"
+        icon: "🛍️"
       },
       {
         id: "apna-dg-supabase",
         title: "Apna DG Store Supabase",
         url: "https://supabase.com/dashboard/project/xbzvnhhyataeciiysbhh/sql/11ceb9e6-91fa-46c5-8b35-97a4bb07d209",
         category: "apps",
-        icon: "⚡",
-        description: "Supabase Database & Backend Console"
+        icon: "⚡"
       },
       {
         id: "dg-store-ims",
         title: "DG Store IMS Web",
         url: "https://sharmaakash7800.github.io/DG_IMS/",
         category: "apps",
-        icon: "🏬",
-        description: "Inventory Management Web App"
+        icon: "🏬"
       },
       {
         id: "property-website",
         title: "Shri Bheru Nath Property Dealer",
         url: "https://sharmaakash7800.github.io/property-website/",
         category: "apps",
-        icon: "🏠",
-        description: "Real estate listing & property website"
+        icon: "🏠"
       },
       {
         id: "property-inquiry-form",
         title: "Property Inquiry Form",
         url: "https://docs.google.com/forms/d/e/1FAIpQLSfXI_II-qqfPshWeJwCtYshghSan5YAijvf1RkjZM5rL1xZrQ/viewform?usp=sharing&ouid=109146852056270324227",
         category: "docs",
-        icon: "📝",
-        description: "Aapki Property, Aapki Pasand Inquiry Form"
+        icon: "📝"
       },
       {
         id: "shri-management-studies",
         title: "Shri Management & Business Studies",
         url: "https://docs.google.com/spreadsheets/d/1qWufTlPG-Qu47F_Ok9toa1G83fFaB38fhhF9t91QHBM/edit?gid=0#gid=0",
         category: "sheets",
-        icon: "📚",
-        description: "Business management curriculum spreadsheet"
+        icon: "📚"
       },
       {
         id: "google-analytics",
         title: "Google Analytics Dashboard",
         url: "https://analytics.google.com/analytics/web/#/a360521372p495572085/reports/intelligenthome?params=_u..nav%3Dmaui&collectionId=user",
         category: "dashboards",
-        icon: "📈",
-        description: "Web traffic and visitor analytics portal"
+        icon: "📈"
       },
       {
         id: "email-advertisement",
         title: "Email Advertisement Tracker",
         url: "https://docs.google.com/spreadsheets/d/1GWqgqkjsj1oz56qQcqR8sSdmJnmdKrZf56aT4v5sJOE/edit?gid=1994925139#gid=1994925139",
         category: "sheets",
-        icon: "📧",
-        description: "Marketing and email campaign tracker"
+        icon: "📧"
       },
       {
         id: "activity-cost-analyzer",
         title: "Activity Cost Analyzer",
         url: "https://docs.google.com/spreadsheets/d/1u4CK0FXMShXpYHKjHjJrcERFHzscrbPgGCGFfUGS4i4/edit?gid=95172440#gid=95172440",
         category: "sheets",
-        icon: "📊",
-        description: "Cost calculation and expense analysis sheet"
+        icon: "📊"
       },
       {
         id: "mind-map-book",
         title: "Mind Map Book Website",
         url: "https://sites.google.com/view/mind-shaping?usp=sharing",
         category: "tools",
-        icon: "🧠",
-        description: "Mind shaping and visual learning resources"
+        icon: "🧠"
       },
       {
         id: "notebook-lm",
         title: "NotebookLM AI",
         url: "https://notebooklm.google.com/",
         category: "tools",
-        icon: "✨",
-        description: "Google AI research assistant notebook"
+        icon: "✨"
       },
       {
         id: "perplexity-ai",
         title: "Perplexity AI",
         url: "https://www.perplexity.ai/",
         category: "tools",
-        icon: "🔮",
-        description: "AI search and research workspace"
+        icon: "🔮"
       },
       {
         id: "notion-workspace",
         title: "Notion Workspace",
         url: "https://www.notion.so/",
         category: "tools",
-        icon: "📓",
-        description: "Notes, wiki, and project database"
+        icon: "📓"
       },
       {
         id: "automated-resume-sender",
         title: "Automated Resume Sender",
         url: "https://docs.google.com/spreadsheets/d/1wqUfFaVKGKcNMg-V6JSkg9crXmdn5xlSInklXp-kVRw/edit?gid=0#gid=0",
         category: "sheets",
-        icon: "💼",
-        description: "Automated job application & resume tracking sheet"
+        icon: "💼"
       },
       {
         id: "business-script",
         title: "Business Script",
         url: "https://docs.google.com/document/d/11MyUDXQjR_0czsm1POBN-rdt2wyQb7ImGzks8KKNBto/edit?tab=t.0",
         category: "docs",
-        icon: "📜",
-        description: "Standard operating scripts & guidelines"
+        icon: "📜"
       },
       {
         id: "business-model",
         title: "Business Model Sheet",
         url: "https://docs.google.com/spreadsheets/d/1xuXK29s5KutbOSzHjheKD3y5jnhMjER0/edit?gid=142952597#gid=142952597",
         category: "sheets",
-        icon: "📈",
-        description: "Revenue modeling and business architecture"
+        icon: "📈"
       }
     ];
 
     // State Variables
     let currentCategory = "all";
     let searchQuery = "";
-    let isListView = false;
     let starredIds = JSON.parse(localStorage.getItem("omnidesk_starred") || "[]");
     let customLinks = JSON.parse(localStorage.getItem("omnidesk_custom_links") || "[]");
 
-    // Category Label & Icon Mapping
     const categoryConfig = {
       dashboards: { title: "Dashboards & Analytics", icon: "📊" },
       sheets: { title: "Google Sheets & Systems", icon: "📈" },
@@ -1422,45 +1324,37 @@
       tools: "AI & Tools"
     };
 
-    // Combined Items List
     function getAllItems() {
       return [...defaultWorkspaceItems, ...customLinks];
     }
 
-    // Elements
+    // DOM Elements
     const linksContainer = document.getElementById("linksContainer");
     const searchInput = document.getElementById("searchInput");
     const clearSearch = document.getElementById("clearSearch");
     const categoriesBar = document.getElementById("categoriesBar");
     const visibleCount = document.getElementById("visibleCount");
     const activeFilterTag = document.getElementById("activeFilterTag");
-    const viewToggle = document.getElementById("viewToggle");
-    const viewIcon = document.getElementById("viewIcon");
     const themeToggle = document.getElementById("themeToggle");
     const themeIcon = document.getElementById("themeIcon");
 
-    // Drawer Elements
     const menuToggleBtn = document.getElementById("menuToggleBtn");
     const mobileDrawer = document.getElementById("mobileDrawer");
     const drawerBackdrop = document.getElementById("drawerBackdrop");
     const closeDrawerBtn = document.getElementById("closeDrawerBtn");
     const drawerNavList = document.getElementById("drawerNavList");
-
-    // Modal Elements
-    const addModalOverlay = document.getElementById("addModalOverlay");
-    const openAddModalBtn = document.getElementById("openAddModalBtn");
     const drawerAddLinkBtn = document.getElementById("drawerAddLinkBtn");
+
+    const addModalOverlay = document.getElementById("addModalOverlay");
     const closeModalBtn = document.getElementById("closeModalBtn");
     const cancelModalBtn = document.getElementById("cancelModalBtn");
     const addLinkForm = document.getElementById("addLinkForm");
 
-    // Code Help Elements
     const codeHelpOverlay = document.getElementById("codeHelpOverlay");
     const helpCodeBtn = document.getElementById("helpCodeBtn");
     const closeCodeHelpBtn = document.getElementById("closeCodeHelpBtn");
     const closeHelpModalOk = document.getElementById("closeHelpModalOk");
 
-    // Update Item Counts
     function updateCounts() {
       const items = getAllItems();
       const counts = {
@@ -1490,7 +1384,6 @@
       renderDrawerNav(counts);
     }
 
-    // Render Mobile Drawer Items
     function renderDrawerNav(counts) {
       const keys = ["all", "favorites", "dashboards", "sheets", "docs", "apps", "tools"];
       drawerNavList.innerHTML = "";
@@ -1508,7 +1401,6 @@
       });
     }
 
-    // Toggle Favorite
     function toggleStar(itemId, event) {
       if (event) {
         event.preventDefault();
@@ -1528,14 +1420,13 @@
       renderItems();
     }
 
-    // Delete Custom Link
     function deleteCustomLink(itemId, event) {
       if (event) {
         event.preventDefault();
         event.stopPropagation();
       }
 
-      if (confirm("Are you sure you want to delete this custom link?")) {
+      if (confirm("Are you sure you want to delete this link?")) {
         customLinks = customLinks.filter(item => item.id !== itemId);
         localStorage.setItem("omnidesk_custom_links", JSON.stringify(customLinks));
         showToast("🗑️ Link deleted!");
@@ -1544,7 +1435,6 @@
       }
     }
 
-    // Copy Link URL
     function copyUrl(url, event) {
       if (event) {
         event.preventDefault();
@@ -1552,20 +1442,19 @@
       }
 
       navigator.clipboard.writeText(url).then(() => {
-        showToast("📋 Link copied to clipboard!");
+        showToast("📋 Link copied!");
       }).catch(() => {
         showToast("Failed to copy link");
       });
     }
 
-    // Toast
     function showToast(msg) {
       const toast = document.getElementById("toast");
       document.getElementById("toastMsg").textContent = msg;
       toast.classList.add("show");
       setTimeout(() => {
         toast.classList.remove("show");
-      }, 2500);
+      }, 2200);
     }
 
     function formatUrlPreview(url) {
@@ -1577,22 +1466,21 @@
       }
     }
 
-    // Single Card HTML Generator
+    // Direct Clickable Card HTML
     function createCardHtml(item) {
       const isStarred = starredIds.includes(item.id);
       const isCustom = item.isCustom;
 
       return `
-        <a class="card-item" href="${item.url}" target="_blank" rel="noopener noreferrer">
+        <a class="card-item" href="${item.url}" target="_blank" rel="noopener noreferrer" title="Click to open ${item.title}">
           <div class="card-main-info">
             <div class="card-icon">${item.icon || '🔗'}</div>
             <div class="card-text">
-              <div class="card-title">${item.title}</div>
-              <div class="card-url-preview">🔗 ${formatUrlPreview(item.url)}</div>
-              <div class="card-tag-row">
-                <span class="card-tag">${item.category}</span>
-                ${isCustom ? '<span class="custom-badge">CUSTOM</span>' : ''}
+              <div class="card-title-row">
+                <span class="card-title">${item.title}</span>
+                <span class="card-external-arrow">↗</span>
               </div>
+              <div class="card-url-preview">${formatUrlPreview(item.url)}</div>
             </div>
           </div>
 
@@ -1616,22 +1504,17 @@
                 🗑️
               </button>
             ` : ''}
-
-            <span class="open-link-btn">
-              Open ↗
-            </span>
           </div>
         </a>
       `;
     }
 
-    // Render Items (Supports Category Section Grouping!)
+    // Render Items
     function renderItems() {
       linksContainer.innerHTML = "";
       const allItems = getAllItems();
 
       const filtered = allItems.filter(item => {
-        // Category Filter Match
         let categoryMatch = false;
         if (currentCategory === "all") {
           categoryMatch = true;
@@ -1641,12 +1524,10 @@
           categoryMatch = item.category === currentCategory;
         }
 
-        // Search Match
         const q = searchQuery.toLowerCase();
         const searchMatch = !q || 
           item.title.toLowerCase().includes(q) || 
-          item.url.toLowerCase().includes(q) || 
-          (item.description && item.description.toLowerCase().includes(q));
+          item.url.toLowerCase().includes(q);
 
         return categoryMatch && searchMatch;
       });
@@ -1656,16 +1537,14 @@
 
       if (filtered.length === 0) {
         linksContainer.innerHTML = `
-          <div style="text-align: center; padding: 60px 20px; border: 2px dashed var(--border-color); border-radius: var(--radius-lg); background: var(--bg-surface);">
-            <div style="font-size: 44px; opacity: 0.5;">🔍</div>
-            <div style="font-size: 18px; font-weight: 700; margin-top: 10px;">No links found</div>
-            <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Try searching something else or switch categories.</div>
+          <div style="text-align: center; padding: 50px 20px; border: 2px dashed var(--border-color); border-radius: var(--radius-lg); background: var(--bg-surface);">
+            <div style="font-size: 38px; opacity: 0.5;">🔍</div>
+            <div style="font-size: 16px; font-weight: 700; margin-top: 8px;">No links found</div>
           </div>
         `;
         return;
       }
 
-      // If viewing "All Items" without an active search query, display grouped by Category Sections!
       if (currentCategory === "all" && searchQuery === "") {
         const categoriesOrder = ["dashboards", "sheets", "docs", "apps", "tools"];
 
@@ -1677,9 +1556,9 @@
               <div class="category-group-section">
                 <div class="category-header-title">
                   <span>${categoryConfig[catKey].icon} ${categoryConfig[catKey].title}</span>
-                  <span class="cat-badge-count">${catItems.length} items</span>
+                  <span class="cat-badge-count">${catItems.length}</span>
                 </div>
-                <div class="${isListView ? 'links-list-mode' : 'links-grid'}">
+                <div class="links-grid">
                   ${catItems.map(item => createCardHtml(item)).join("")}
                 </div>
               </div>
@@ -1688,9 +1567,8 @@
           }
         });
       } else {
-        // Direct Grid / List rendering for specific category / search results
         const containerHtml = `
-          <div class="${isListView ? 'links-list-mode' : 'links-grid'}">
+          <div class="links-grid">
             ${filtered.map(item => createCardHtml(item)).join("")}
           </div>
         `;
@@ -1698,7 +1576,6 @@
       }
     }
 
-    // Category Chip Click
     categoriesBar.addEventListener("click", (e) => {
       const chip = e.target.closest(".chip-btn");
       if (!chip) return;
@@ -1711,11 +1588,9 @@
       renderItems();
     });
 
-    // Select Category from Drawer
     function selectCategoryFromDrawer(categoryKey) {
       currentCategory = categoryKey;
 
-      // Sync header chips
       document.querySelectorAll(".chip-btn").forEach(btn => {
         btn.classList.toggle("active", btn.dataset.category === categoryKey);
       });
@@ -1725,7 +1600,6 @@
       renderItems();
     }
 
-    // Search Input Event Listener
     searchInput.addEventListener("input", (e) => {
       searchQuery = e.target.value.trim();
       clearSearch.classList.toggle("visible", searchQuery.length > 0);
@@ -1740,7 +1614,6 @@
       searchInput.focus();
     });
 
-    // Drawer Open / Close Logic
     function openDrawer() {
       mobileDrawer.classList.add("open");
       drawerBackdrop.classList.add("active");
@@ -1755,7 +1628,6 @@
     closeDrawerBtn.addEventListener("click", closeDrawer);
     drawerBackdrop.addEventListener("click", closeDrawer);
 
-    // Modal Open / Close Logic
     function openModal() {
       addModalOverlay.classList.add("active");
       document.getElementById("linkTitle").focus();
@@ -1766,7 +1638,6 @@
       addLinkForm.reset();
     }
 
-    openAddModalBtn.addEventListener("click", openModal);
     drawerAddLinkBtn.addEventListener("click", () => {
       closeDrawer();
       openModal();
@@ -1774,7 +1645,6 @@
     closeModalBtn.addEventListener("click", closeModal);
     cancelModalBtn.addEventListener("click", closeModal);
 
-    // Code Help Modal
     helpCodeBtn.addEventListener("click", () => {
       closeDrawer();
       codeHelpOverlay.classList.add("active");
@@ -1783,7 +1653,6 @@
     closeCodeHelpBtn.addEventListener("click", () => codeHelpOverlay.classList.remove("active"));
     closeHelpModalOk.addEventListener("click", () => codeHelpOverlay.classList.remove("active"));
 
-    // Handle Custom Link Submission
     function handleCustomLinkSubmit(event) {
       event.preventDefault();
 
@@ -1806,28 +1675,18 @@
         url: url,
         category: category,
         icon: icon,
-        isCustom: true,
-        description: "User added custom link"
+        isCustom: true
       };
 
       customLinks.push(newLinkObj);
       localStorage.setItem("omnidesk_custom_links", JSON.stringify(customLinks));
 
       closeModal();
-      showToast("➕ New Custom Link added!");
+      showToast("➕ New link added!");
       updateCounts();
       renderItems();
     }
 
-    // View Switcher (Grid / List)
-    viewToggle.addEventListener("click", () => {
-      isListView = !isListView;
-      viewIcon.textContent = isListView ? "📑" : "📱";
-      showToast(isListView ? "Switched to List View" : "Switched to Grid View");
-      renderItems();
-    });
-
-    // Theme Switcher (Dark / Light)
     themeToggle.addEventListener("click", () => {
       const currentTheme = document.documentElement.getAttribute("data-theme");
       const nextTheme = currentTheme === "dark" ? "light" : "dark";
@@ -1843,7 +1702,6 @@
       themeIcon.textContent = savedTheme === "dark" ? "🌙" : "☀️";
     }
 
-    // Global Keydown Shortcuts
     document.addEventListener("keydown", (e) => {
       if (e.key === "/" && document.activeElement !== searchInput) {
         e.preventDefault();
@@ -1855,7 +1713,6 @@
       }
     });
 
-    // Initial Load
     updateCounts();
     renderItems();
   </script>
