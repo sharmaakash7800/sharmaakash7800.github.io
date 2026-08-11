@@ -906,9 +906,9 @@
         icon: "⚡"
       },
       {
-        id: "admin-my-system",
-        title: "Admin My System",
-        url: "https://lookerstudio.google.com/reporting/a91cad50-9fd8-490d-bcf5-48cc1edf183d",
+        id: "admin-dashboard",
+        title: "Admin Dashboard",
+        url: "https://datastudio.google.com/reporting/a91cad50-9fd8-490d-bcf5-48cc1edf183d",
         category: "dashboards",
         icon: "📊"
       },
