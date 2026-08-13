@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
   <title>Dashboards - OmniDesk Hub</title>
   <meta name="description" content="OmniDesk is your central hub for dashboards, Google Sheets, business management tools, and project links.">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="OmniDesk">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png">
   
   <base target="_blank">
 
@@ -717,6 +726,10 @@
     </div>
 
     <div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px;">
+      <button id="installAppBtn" class="drawer-btn" style="display:none;">
+        📲 Install OmniDesk App
+      </button>
+
       <button id="themeToggleBtn" class="drawer-theme-btn">
         <span>Theme Toggle</span>
         <span id="themeIcon">🌙 Dark</span>
@@ -1402,6 +1415,50 @@
         codeHelpOverlay.classList.remove("active");
       }
     });
+
+    // ---------------- PWA INSTALL SUPPORT ----------------
+    let deferredInstallPrompt = null;
+    const installAppBtn = document.getElementById("installAppBtn");
+
+    window.addEventListener("beforeinstallprompt", (event) => {
+      event.preventDefault();
+      deferredInstallPrompt = event;
+      if (installAppBtn) installAppBtn.style.display = "flex";
+    });
+
+    if (installAppBtn) {
+      installAppBtn.addEventListener("click", async () => {
+        if (!deferredInstallPrompt) {
+          showToast("Browser menu se 'Install app' / 'Add to Home Screen' choose karein.");
+          return;
+        }
+
+        closeDrawer();
+        deferredInstallPrompt.prompt();
+
+        try {
+          await deferredInstallPrompt.userChoice;
+        } finally {
+          deferredInstallPrompt = null;
+          installAppBtn.style.display = "none";
+        }
+      });
+    }
+
+    window.addEventListener("appinstalled", () => {
+      deferredInstallPrompt = null;
+      if (installAppBtn) installAppBtn.style.display = "none";
+      showToast("✅ OmniDesk installed!");
+    });
+
+    // Register service worker (required for reliable PWA/offline app shell behavior)
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js").catch((error) => {
+          console.warn("Service Worker registration failed:", error);
+        });
+      });
+    }
 
     updateCounts();
     renderItems();
